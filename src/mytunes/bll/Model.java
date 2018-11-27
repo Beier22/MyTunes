@@ -6,6 +6,8 @@
 package mytunes.bll;
 
 import java.util.List;
+import mytunes.be.Playlist;
+import mytunes.be.Song;
 
 /**
  *
@@ -16,40 +18,46 @@ public class Model implements IModel
     private SongDAO songDao;
     private PlaylistDAO playlistDao;
     
+    public Model()
+    {
+        songDao = new SongDAO();
+        playlistDao = new PlaylistDAO();
+    }
+    
     @Override
     public List<Song> getAllSongs()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return songDao.getAllSongs(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public List<Playlist> getAllPlaylists()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return playlistDao.getAllSongs(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void saveSong(Song s)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        songDao.saveSong(s); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void savePlaylist(Playlist p)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        playlistDao.savePlaylist(p); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void deleteSong(Song s)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        songDao.deleteSong(s); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void deletePlaylist(Playlist p)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        playlistDao.deletePlaylist(p); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -6,6 +6,8 @@
 package mytunes.bll;
 
 import java.util.List;
+import mytunes.be.Playlist;
+import mytunes.be.Song;
 
 /**
  *
