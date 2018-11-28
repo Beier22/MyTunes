@@ -7,6 +7,7 @@ package mytunes.be;
 import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 /**
  *
  * @author Tothko
@@ -35,7 +36,7 @@ public class Song {
    public void play(){
        mediaPlayer.play();
 }
-   public void play(int time){
+   public void play(Duration time){
        mediaPlayer.setStartTime(time);
 
 }
