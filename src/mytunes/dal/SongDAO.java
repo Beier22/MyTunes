@@ -32,7 +32,7 @@ public class SongDAO
     
     public void removeSong(Song s)
     {
-        /*try(Connection con = conProvider.getConnection())
+        try(Connection con = conProvider.getConnection())
         {
             String sql = "DELETE FROM Songs/Artists WHERE SongID =? ; DELETE FROM Playlists/Songs WHERE SongID = ?; DELETE FROM Songs WHERE ID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -46,12 +46,12 @@ public class SongDAO
         } catch (SQLException ex)
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }
     
     public void addSong(Song s)
     {
-        /*try(Connection con = conProvider.getConnection())
+        try(Connection con = conProvider.getConnection())
         {
             String sql = "INSERT INTO Songs(Title,Category,Duration,File) VALUES (?,?,?,?);";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -66,12 +66,12 @@ public class SongDAO
         } catch (SQLException ex)
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }
     
     public Song getSong(int id)
     {
-        /*Song retval= null;
+        Song retval= null;
         try(Connection con = conProvider.getConnection())
         {
             String sql = "SELECT Songs.*,Artists.Name FROM ((Songs INNER JOIN  WHERE ID = ? INNER JOIN Songs/Artists  ;";
@@ -88,13 +88,12 @@ public class SongDAO
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return retval;*/
-        return null;
+        return retval;
     }
     
     public List<Song> getAllSongs()
     {
-        /*List<Song> retval = new ArrayList<>();
+        List<Song> retval = new ArrayList<>();
         try(Connection con = conProvider.getConnection())
         {
             String sqlStatement = "SELECT * FROM Songs";
@@ -115,7 +114,6 @@ public class SongDAO
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return retval;*/
-        return null;
+        return retval;
     }
 }
