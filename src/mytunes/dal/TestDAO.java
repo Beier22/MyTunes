@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class TestDAO
 {
-    public static void main(String[] args)
+    public static void main(String[] kokot)
     {
         try
         {
