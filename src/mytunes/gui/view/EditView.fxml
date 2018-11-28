@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="253.0" prefWidth="391.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="mytunes.gui.controller.EditViewController">
+<AnchorPane id="AnchorPane" prefHeight="253.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.EditViewController">
    <children>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="222.0" prefWidth="359.0">
          <children>
@@ -83,8 +82,8 @@
             </HBox>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="54.0" prefWidth="359.0">
                <children>
-                  <Button mnemonicParsing="false" text="Cancel" />
-                  <Button mnemonicParsing="false" text="Save">
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#pressCancel" text="Cancel" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#pressSave" text="Save">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

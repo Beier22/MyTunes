@@ -121,7 +121,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="786.0" layoutY="16.0" prefHeight="66.0" prefWidth="237.0" AnchorPane.rightAnchor="0.39999999999997726" AnchorPane.topAnchor="16.0">
          <children>
-            <Label text="Fiľter:" />
+            <Label text="Filter:" />
             <TextField onKeyReleased="#search">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />

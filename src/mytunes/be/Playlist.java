@@ -16,9 +16,14 @@ public class Playlist {
     private int ID;
     private List<Song> songs;
     private String name;
-
-    public Playlist(int ID) {
+    
+    public Playlist(){
+        
+    }
+    
+    public Playlist(int ID, String name) {
         this.ID = ID;
+        this.name = name;
     }
 
     public int getID() {

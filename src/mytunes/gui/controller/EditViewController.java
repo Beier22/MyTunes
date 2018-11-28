@@ -7,7 +7,11 @@ package mytunes.gui.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -16,6 +20,11 @@ import javafx.fxml.Initializable;
  */
 public class EditViewController implements Initializable {
 
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button saveButton;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +32,19 @@ public class EditViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void pressCancel(ActionEvent event) {
+        Stage st = (Stage) cancelButton.getScene().getWindow();
+        st.close();
+    }
+
+    @FXML
+    private void pressSave(ActionEvent event) {
+        //TODO
+        
+        Stage st = (Stage) saveButton.getScene().getWindow();
+        st.close();
+    }
     
 }
