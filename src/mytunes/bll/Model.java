@@ -8,6 +8,8 @@ package mytunes.bll;
 import java.util.List;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
+import mytunes.dal.PlaylistDAO;
+import mytunes.dal.SongDAO;
 
 /**
  *
@@ -33,25 +35,25 @@ public class Model implements IModel
     @Override
     public List<Playlist> getAllPlaylists()
     {
-        return playlistDao.getAllSongs(); //To change body of generated methods, choose Tools | Templates.
+        return playlistDao.getAllPlaylists(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void saveSong(Song s)
     {
-        songDao.saveSong(s); //To change body of generated methods, choose Tools | Templates.
+        songDao.addSong(s); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void savePlaylist(Playlist p)
     {
-        playlistDao.savePlaylist(p); //To change body of generated methods, choose Tools | Templates.
+        playlistDao.createPlaylist(p); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void deleteSong(Song s)
     {
-        songDao.deleteSong(s); //To change body of generated methods, choose Tools | Templates.
+        songDao.removeSong(s); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
