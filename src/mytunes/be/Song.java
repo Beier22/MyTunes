@@ -5,38 +5,37 @@
  */
 package mytunes.be;
 
-
-
 /**
  *
  * @author Tothko
  */
 public class Song {
 
-    public Song(int ID) {
-        this.ID = ID;
-
-    }
     private int ID;
     private String title;
-    private String filePath = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\Kid Cudi - Pursuit Of Happiness ft. MGMT.mp3";
-    ;
+    private String filePath = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\TEST.wav";
     private int totalTime;
     private String artist;
     private String category;
-    private int currentTime;
 
-    
-    public void pause() {
+    public Song(int ID) {
+        this.ID = ID;
+        
+        try {
 
-    }
+            SimpleAudioPlayer audioPlayer = new SimpleAudioPlayer(filePath);
 
-    public void play() {
-       
+            audioPlayer.play();
+
+        } catch (Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+
+        }
+        System.out.println("Song succesfully created");
     }
 
     public void play(int time) {
-        
 
     }
 
@@ -82,14 +81,6 @@ public class Song {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public int getCurrentTime() {
-        return currentTime;
-    }
-
-    public void setCurrentTime(int currentTime) {
-        this.currentTime = currentTime;
     }
 
 }

@@ -5,14 +5,22 @@
  */
 package mytunes.be;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 /**
  *
  * @author Tothko
  */
 public class SongTest {
-     public static void main(String[] args)
-    {
-        Song undead = new Song();
-        undead.testPlay();
+
+    public static void main(String[] args) {
+        Song undead = new Song(0);
+        
+              
+            
     }
 }
