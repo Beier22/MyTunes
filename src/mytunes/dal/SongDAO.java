@@ -51,14 +51,14 @@ public class SongDAO
     
     public void addSong(Song s)
     {
-        try(Connection con = conProvider.getConnection())
+        /*try(Connection con = conProvider.getConnection())
         {
             String sql = "INSERT INTO Songs(Title,Category,Duration,File) VALUES (?,?,?,?);";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, s.getTitle());
             pstmt.setString(2, s.getCategory());
-           // pstmt.setString(3, s.getDuration());
-           // pstmt.setString(3, s.getFile());
+            pstmt.setString(3, s.getDuration());
+            pstmt.setString(3, s.getFile());
             pstmt.execute();
         } catch (SQLServerException ex)
         {
@@ -66,20 +66,20 @@ public class SongDAO
         } catch (SQLException ex)
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
     
     public Song getSong(int id)
     {
-        Song retval= null;
+        /*Song retval= null;
         try(Connection con = conProvider.getConnection())
         {
             String sql = "SELECT Songs.*,Artists.Name FROM ((Songs INNER JOIN  WHERE ID = ? INNER JOIN Songs/Artists  ;";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, ""+id);
             ResultSet rs = pstmt.executeQuery();
-            //retval = new Song(rs.getInt("ID"),rs.getString("Title"),rs.getString("File"));
-            //retval.setDuration(rs.getInt("Duration"));
+            retval = new Song(rs.getInt("ID"),rs.getString("Title"),rs.getString("File"));
+            retval.setDuration(rs.getInt("Duration"));
             retval.setCategory(rs.getString("Category"));
         } catch (SQLServerException ex)
         {
@@ -88,12 +88,13 @@ public class SongDAO
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return retval;
+        return retval;*/
+        return null;
     }
     
     public List<Song> getAllSongs()
     {
-        List<Song> retval = new ArrayList<>();
+        /*List<Song> retval = new ArrayList<>();
         try(Connection con = conProvider.getConnection())
         {
             String sqlStatement = "SELECT * FROM Songs";
@@ -104,8 +105,8 @@ public class SongDAO
                 String id = rs.getString("ID");
                 String title = rs.getString("Title");
                 String job = rs.getString("Category");
-                //Song s = new Song(id,title,job);
-                //retval.add(s);
+                Song s = new Song(id,title,job);
+                retval.add(s);
             }
         } catch (SQLServerException ex)
         {
@@ -114,6 +115,7 @@ public class SongDAO
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return retval;
+        return retval;*/
+        return null;
     }
 }

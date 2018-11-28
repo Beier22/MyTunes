@@ -61,7 +61,7 @@ public class MainViewController implements Initializable {
         Stage s = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/PlaylistEditView.fxml"));
         s.setScene(new Scene(loader.load()));
-        
+        s.setTitle("New Playlist");
         PlaylistEditViewController questions = loader.<PlaylistEditViewController>getController();
         s.show();
     }
@@ -71,7 +71,7 @@ public class MainViewController implements Initializable {
         Stage s = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/PlaylistEditView.fxml"));
         s.setScene(new Scene(loader.load()));
-        
+        s.setTitle("Edit Playlist");
         PlaylistEditViewController questions = loader.<PlaylistEditViewController>getController();
         s.show();
     }
@@ -101,7 +101,7 @@ public class MainViewController implements Initializable {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/EditView.fxml"));
         stage.setScene(new Scene(loader.load()));
-        
+        stage.setTitle("New Song");
         EditViewController songEdit = loader.<EditViewController>getController();
         stage.show();
     }
@@ -111,7 +111,7 @@ public class MainViewController implements Initializable {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/EditView.fxml"));
         stage.setScene(new Scene(loader.load()));
-        
+        stage.setTitle("Edit Song");
         EditViewController songEdit = loader.<EditViewController>getController();
         stage.show();
     }
