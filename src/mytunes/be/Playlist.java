@@ -12,8 +12,17 @@ import java.util.List;
  * @author Tothko
  */
 public class Playlist {
+  private int ID;
   private List<Song> songs;
   private String name;
+
+    public Playlist(int ID){
+        this.ID= ID;
+    }
+  
+    public int getID() {
+        return ID;
+    }
 
     public List<Song> getSongs() {
         return songs;

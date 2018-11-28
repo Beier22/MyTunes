@@ -4,50 +4,46 @@
  * and open the template in the editor.
  */
 package mytunes.be;
-import java.io.File;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
+
+
+
 /**
  *
  * @author Tothko
  */
-
-
-
 public class Song {
-    
-    public Song(){
-        file = "kurva.mp3";
-        
+
+    public Song(int ID) {
+        this.ID = ID;
+
     }
+    private int ID;
     private String title;
-    private String file;
-    private int  totalTime;
+    private String filePath = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\Kid Cudi - Pursuit Of Happiness ft. MGMT.mp3";
+    ;
+    private int totalTime;
     private String artist;
     private String category;
     private int currentTime;
-    Media hit = new Media(new File(file).toURI().toString());
-    MediaPlayer mediaPlayer = new MediaPlayer(hit);
-   
-   public void pause(){
 
-}
-   public void play(){
-       mediaPlayer.play();
-}
-   public void play(Duration time){
-       mediaPlayer.setStartTime(time);
+    
+    public void pause() {
 
-}
+    }
 
-   
-   
-   
-   
-   
-   
-   
+    public void play() {
+       
+    }
+
+    public void play(int time) {
+        
+
+    }
+
+    public int getID() {
+        return ID;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -56,12 +52,12 @@ public class Song {
         this.title = title;
     }
 
-    public String getFile() {
-        return file;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void setFile(String file) {
-        this.file = file;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public int getTotalTime() {
@@ -95,7 +91,5 @@ public class Song {
     public void setCurrentTime(int currentTime) {
         this.currentTime = currentTime;
     }
-   
+
 }
-
-
