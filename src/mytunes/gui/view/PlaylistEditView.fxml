@@ -8,18 +8,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="159.0" prefWidth="267.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.PlaylistEditViewController">
+<AnchorPane id="AnchorPane" prefHeight="159.0" prefWidth="311.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.PlaylistEditViewController">
    <children>
-      <VBox layoutX="22.0" layoutY="12.0" prefHeight="134.0" prefWidth="223.0">
+      <VBox layoutX="22.0" layoutY="12.0" prefHeight="134.0" prefWidth="264.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="82.0" prefWidth="302.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="82.0" prefWidth="302.0">
                <children>
                   <Label text="Name:">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="input" prefHeight="26.0" prefWidth="179.0">
+                  <TextField fx:id="input" prefHeight="26.0" prefWidth="206.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
