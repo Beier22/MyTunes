@@ -13,20 +13,23 @@ public class Song {
 
     private int ID;
     private String title;
-    private String filePath = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\TEST.wav";
+    private String filePath = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\Undead.mp3";
     private int totalTime;
     private String artist;
     private String category;
-
+    
     public Song(int ID) {
         this.ID = ID;
         
+        
         try {
-
+          
             SimpleAudioPlayer audioPlayer = new SimpleAudioPlayer(filePath);
-
+            
             audioPlayer.play();
-
+            while(true){
+                
+            }
         } catch (Exception ex) {
             System.out.println("Error with playing sound.");
             ex.printStackTrace();

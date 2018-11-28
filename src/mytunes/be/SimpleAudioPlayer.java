@@ -21,25 +21,26 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class SimpleAudioPlayer {
 
-    private int currentTime;
-    private Long currentFrame;
-    private Clip clip;
-    private String status;
-    private AudioInputStream audioInputStream;
-    private String filePath;
-      
+    
+    Long currentFrame;
+    Clip clip;
+    String status;
+    AudioInputStream audioInputStream;
+    String filePath;
+    
     public SimpleAudioPlayer(String filePath)throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         // create AudioInputStream object 
         this.filePath = filePath;
         audioInputStream = AudioSystem.getAudioInputStream(new File(this.filePath).getAbsoluteFile());
-
+        System.out.println(audioInputStream);
         // create clip reference 
         clip = AudioSystem.getClip();
-
+        System.out.println(clip);
         // open audioInputStream to the clip 
         clip.open(audioInputStream);
 
         clip.loop(Clip.LOOP_CONTINUOUSLY);
+        
         
     }
 
