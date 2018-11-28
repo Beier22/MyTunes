@@ -69,7 +69,7 @@ public class MainViewController implements Initializable {
     @FXML
     private void editPlaylist(ActionEvent event) throws IOException {
         Stage s = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/view/PlaylistEditView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/PlaylistEditView.fxml"));
         s.setScene(new Scene(loader.load()));
         
         PlaylistEditViewController questions = loader.<PlaylistEditViewController>getController();
@@ -99,7 +99,7 @@ public class MainViewController implements Initializable {
     @FXML
     private void newSong(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/view/EditView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/EditView.fxml"));
         stage.setScene(new Scene(loader.load()));
         
         EditViewController songEdit = loader.<EditViewController>getController();
@@ -109,7 +109,7 @@ public class MainViewController implements Initializable {
     @FXML
     private void editSong(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/view/EditView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/EditView.fxml"));
         stage.setScene(new Scene(loader.load()));
         
         EditViewController songEdit = loader.<EditViewController>getController();
