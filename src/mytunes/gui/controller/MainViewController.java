@@ -5,15 +5,19 @@
  */
 package mytunes.gui.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 /**
  *
@@ -50,11 +54,26 @@ public class MainViewController implements Initializable {
     }    
 
     @FXML
-    private void newPlaylist(ActionEvent event) {
+    private void newPlaylist(ActionEvent event) throws IOException {
+        
+        
+        
+        Stage s = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PlaylistEditView.fxml"));
+        s.setScene(new Scene(loader.load()));
+        
+        PlaylistEditViewController questions = loader.<PlaylistEditViewController>getController();
+        s.show();
     }
 
     @FXML
-    private void editPlaylist(ActionEvent event) {
+    private void editPlaylist(ActionEvent event) throws IOException {
+        Stage s = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/view/PlaylistEditView.fxml"));
+        s.setScene(new Scene(loader.load()));
+        
+        PlaylistEditViewController questions = loader.<PlaylistEditViewController>getController();
+        s.show();
     }
 
     @FXML
@@ -78,11 +97,23 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    private void newSong(ActionEvent event) {
+    private void newSong(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/view/EditView.fxml"));
+        stage.setScene(new Scene(loader.load()));
+        
+        EditViewController songEdit = loader.<EditViewController>getController();
+        stage.show();
     }
 
     @FXML
-    private void editSong(ActionEvent event) {
+    private void editSong(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui/view/EditView.fxml"));
+        stage.setScene(new Scene(loader.load()));
+        
+        EditViewController songEdit = loader.<EditViewController>getController();
+        stage.show();
     }
 
     @FXML
