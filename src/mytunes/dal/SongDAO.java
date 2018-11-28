@@ -5,7 +5,13 @@
  */
 package mytunes.dal;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mytunes.be.Song;
 
 /**
@@ -23,7 +29,19 @@ public class SongDAO
     
     public void removeSong(Song s)
     {
-        
+       /* try(Connection con = conProvider.getConnection())
+        {
+            String sql = "DELETE FROM Person WHERE cprno =?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, p.getCpr());
+            pstmt.execute();
+        } catch (SQLServerException ex)
+        {
+            Logger.getLogger(PersonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(PersonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
     }
     
     public void addSong(Song s)

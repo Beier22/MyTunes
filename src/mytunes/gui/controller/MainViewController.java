@@ -59,7 +59,7 @@ public class MainViewController implements Initializable {
         
         
         Stage s = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/PlaylistEditView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/PlaylistEditView.fxml"));
         s.setScene(new Scene(loader.load()));
         
         PlaylistEditViewController questions = loader.<PlaylistEditViewController>getController();
