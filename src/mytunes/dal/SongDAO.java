@@ -29,11 +29,11 @@ public class SongDAO
     
     public void removeSong(Song s)
     {
-       /* try(Connection con = conProvider.getConnection())
+        /*try(Connection con = conProvider.getConnection())
         {
-            String sql = "DELETE FROM Person WHERE cprno =?";
+            String sql = "DELETE FROM Songs WHERE cprno =?";
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, p.getCpr());
+            pstmt.setString(1, s.getId());
             pstmt.execute();
         } catch (SQLServerException ex)
         {
