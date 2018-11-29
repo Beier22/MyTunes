@@ -5,7 +5,8 @@
  */
 package mytunes.be;
 
-import javafx.util.Duration;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  *
@@ -14,33 +15,55 @@ import javafx.util.Duration;
 public class Song {
 
     private int ID;
-    private String title;
-    private String filePath = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\Undead.mp3";
-    private int totalTime;
-    private String artist;
-    private String category;
-    private Duration duration;
+    private StringProperty title;
+    private StringProperty filePath;// = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\TEST.wav";
+    private int duration;
+    private StringProperty artist;
+    private StringProperty category;
     
-    public Song(int ID,String title, String category) {
+    
+    private StringProperty filePathProperty()
+    {
+        if (filePath == null) filePath = new SimpleStringProperty(this, "lastName");
+            return filePath; 
+    }
+    
+    private StringProperty titleProperty()
+    {
+        if (title == null) title = new SimpleStringProperty(this, "title");
+            return title; 
+    }
+    
+    private StringProperty artistProperty()
+    {
+        if (artist == null) artist = new SimpleStringProperty(this, "artist");
+            return artist; 
+    }
+    
+    private StringProperty categoryProperty()
+    {
+        if (category == null) category = new SimpleStringProperty(this, "category");
+            return category; 
+    }
+
+    public Song(int ID, String title, String filePath) {
         this.ID = ID;
-        this.title = title;
-        this.category = category;
+        titleProperty().set(title);
+        filePathProperty().set(filePath);
         
-        
+       /* 
         try {
-          
+
             SimpleAudioPlayer audioPlayer = new SimpleAudioPlayer(filePath);
-            
+
             audioPlayer.play();
-            while(true){
-                
-            }
+
         } catch (Exception ex) {
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
 
         }
-        System.out.println("Song succesfully created");
+        System.out.println("Song succesfully created");*/
     }
 
     public void play(int time) {
@@ -52,51 +75,53 @@ public class Song {
     }
 
     public String getTitle() {
-        return title;
+        return titleProperty().get();
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        titleProperty().set(title);
     }
 
     public String getFilePath() {
-        return filePath;
+        return filePathProperty().getValue();
     }
 
     public void setFilePath(String filePath) {
-        this.filePath = filePath;
+        filePathProperty().setValue(filePath);
     }
 
-    public int getTotalTime() {
-        return totalTime;
-    }
-
-    public void setTotalTime(int totalTime) {
-        this.totalTime = totalTime;
-    }
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public Duration getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
+
+    public String getArtist() {
+        return artistProperty().getValue();
+    }
+
+    public void setArtist(String artist) {
+        artistProperty().setValue(artist);
+    }
+
+    public String getCategory() {
+        return categoryProperty().getValue();
+    }
+
+    public void setCategory(String category) {
+        categoryProperty().setValue(category);
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Song{" + "ID=" + ID + ", title=" + titleProperty().getValue() + ", filePath=" + 
+                filePathProperty().getValue() + ", duration=" + duration + ", artist=" + artistProperty().getValue() 
+                + ", category=" + categoryProperty().getValue() + '}';
+    }
     
+    
+
 }

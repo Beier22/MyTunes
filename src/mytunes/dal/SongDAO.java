@@ -34,11 +34,10 @@ public class SongDAO
     {
         try(Connection con = conProvider.getConnection())
         {
-            String sql = "DELETE FROM Songs/Artists WHERE SongID =? ; DELETE FROM Playlists/Songs WHERE SongID = ?; DELETE FROM Songs WHERE ID = ?";
+            String sql = "DELETE FROM PlaylistsSongs WHERE SongID = ?; DELETE FROM Songs WHERE ID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, s.getID());
-            pstmt.setString(2, s.getID());
-            pstmt.setString(3, s.getID());
+            pstmt.setInt(1, s.getID());
+            pstmt.setInt(2, s.getID());
             pstmt.execute();
         } catch (SQLServerException ex)
         {
@@ -53,12 +52,13 @@ public class SongDAO
     {
         try(Connection con = conProvider.getConnection())
         {
-            String sql = "INSERT INTO Songs(Title,Category,Duration,File) VALUES (?,?,?,?);";
+            String sql = "INSERT INTO Songs(Title,Category,Duration,Path,Artist) VALUES (?,?,?,?,?);";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, s.getTitle());
             pstmt.setString(2, s.getCategory());
-            pstmt.setString(3, s.getDuration());
-            pstmt.setString(3, s.getFilePath());
+            pstmt.setInt(3,s.getDuration());
+            pstmt.setString(4, s.getFilePath());
+            pstmt.setString(5, s.getArtist());
             pstmt.execute();
         } catch (SQLServerException ex)
         {
@@ -74,13 +74,14 @@ public class SongDAO
         Song retval= null;
         try(Connection con = conProvider.getConnection())
         {
-            String sql = "SELECT Songs.*,Artists.Name FROM ((Songs INNER JOIN  WHERE ID = ? INNER JOIN Songs/Artists  ;";
+            String sql = "SELECT * FROM Songs WHERE ID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, ""+id);
+            pstmt.setInt(1, id); 
             ResultSet rs = pstmt.executeQuery();
-            retval = new Song(rs.getInt("ID"),rs.getString("Title"),rs.getString("File"));
-            retval.setDuration(rs.getInt("Duration"));
-            retval.setCategory(rs.getString("Category"));
+            while(rs.next())
+            {
+                retval = songFromRs(rs);
+            }
         } catch (SQLServerException ex)
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,15 +102,27 @@ public class SongDAO
             ResultSet rs = statement.executeQuery(sqlStatement);
             while(rs.next())
             {
-                String id = rs.getString("ID");
-                String title = rs.getString("Title");
-                String job = rs.getString("Category");
-                Song s = new Song(id,title,job);
-                retval.add(s);
+                retval.add(songFromRs(rs));
             }
         } catch (SQLServerException ex)
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retval;
+    }
+    
+    private Song songFromRs(ResultSet rs)
+    {
+        Song retval = null;
+        try
+        {
+            retval = new Song(rs.getInt("ID"),rs.getString("Title"),rs.getString("Path"));
+            retval.setDuration(rs.getInt("Duration"));
+            retval.setCategory(rs.getString("Category"));
+            retval.setArtist(rs.getString("Artist"));
         } catch (SQLException ex)
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
