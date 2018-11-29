@@ -5,6 +5,8 @@
  */
 package mytunes.be;
 
+import javafx.util.Duration;
+
 /**
  *
  * @author Tothko
@@ -17,9 +19,12 @@ public class Song {
     private int totalTime;
     private String artist;
     private String category;
+    private Duration duration;
     
-    public Song(int ID) {
+    public Song(int ID,String title, String category) {
         this.ID = ID;
+        this.title = title;
+        this.category = category;
         
         
         try {
@@ -86,4 +91,12 @@ public class Song {
         this.category = category;
     }
 
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+    
 }
