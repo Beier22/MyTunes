@@ -36,9 +36,9 @@ public class SongDAO
         {
             String sql = "DELETE FROM Songs/Artists WHERE SongID =? ; DELETE FROM Playlists/Songs WHERE SongID = ?; DELETE FROM Songs WHERE ID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, s.getId());
-            pstmt.setString(2, s.getId());
-            pstmt.setString(3, s.getId());
+            pstmt.setString(1, s.getID());
+            pstmt.setString(2, s.getID());
+            pstmt.setString(3, s.getID());
             pstmt.execute();
         } catch (SQLServerException ex)
         {
@@ -58,7 +58,7 @@ public class SongDAO
             pstmt.setString(1, s.getTitle());
             pstmt.setString(2, s.getCategory());
             pstmt.setString(3, s.getDuration());
-            pstmt.setString(3, s.getFile());
+            pstmt.setString(3, s.getFilePath());
             pstmt.execute();
         } catch (SQLServerException ex)
         {
