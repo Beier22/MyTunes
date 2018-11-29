@@ -50,13 +50,15 @@ public class PlaylistEditViewController implements Initializable {
     @FXML
     private void pressSave(ActionEvent event) {
         //TODO
-        Playlist p = new Playlist();
-        String playlistName = input.getText();
-        p.setName(playlistName);
-        model.savePlaylist(p);
-        
-        Stage st = (Stage) saveButton.getScene().getWindow();
-        st.close();
+        if (!input.getText().equals("")){
+            Playlist p = new Playlist();
+            String playlistName = input.getText();
+            p.setName(playlistName);
+            model.savePlaylist(p);
+
+            Stage st = (Stage) saveButton.getScene().getWindow();
+            st.close();
+        }
     }
     
 }

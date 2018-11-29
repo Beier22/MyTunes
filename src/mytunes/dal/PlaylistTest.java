@@ -5,6 +5,8 @@
  */
 package mytunes.dal;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import mytunes.be.Playlist;
 
 /**
@@ -18,6 +20,16 @@ public class PlaylistTest {
         Playlist p = new Playlist();
         p.setName("This is a test");
         pdao.createPlaylist(p);
+        */
+        
+        
+        /*
+        PlaylistDAO pdao = new PlaylistDAO();
+        ObservableList<Playlist> allPlaylists = FXCollections.observableArrayList();
+        allPlaylists.addAll(pdao.getAllPlaylists());
+        for (Playlist playlist : allPlaylists) {
+            System.out.println(playlist.toString());
+        }
         */
         
     }

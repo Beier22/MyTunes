@@ -77,6 +77,9 @@ public class MainViewController implements Initializable {
         //songTimeCol.setCellValueFactory(new PropertyValueFactory("duration"));
         
         playlists = FXCollections.observableArrayList();
+        playlists.addAll(model.getAllPlaylists());
+        playlistTable.setItems(playlists);
+        playlistNameCol.setCellValueFactory(new PropertyValueFactory("name"));
         
     }    
 

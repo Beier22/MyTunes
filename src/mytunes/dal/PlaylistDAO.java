@@ -8,11 +8,15 @@ package mytunes.dal;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mytunes.be.Playlist;
+import mytunes.be.Song;
 
 /**
  *
@@ -63,10 +67,40 @@ public class PlaylistDAO
     {
         return null;
     }
-
-    public List<Playlist>getAllPlaylists()
+    
+    private Playlist playlistFromRs(ResultSet rs)
     {
-        return null;
+        Playlist retval = null;
+        try
+        {
+            retval = new Playlist(rs.getInt("ID"),rs.getString("Name"));
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retval;
+    }
+    
+    public List<Playlist> getAllPlaylists()
+    {
+        List<Playlist> retval = new ArrayList<>();
+        try(Connection con = conProvider.getConnection())
+        {
+            String sqlStatement = "SELECT * FROM Playlists";
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sqlStatement);
+            while(rs.next())
+            {
+                retval.add(playlistFromRs(rs));
+            }
+        } catch (SQLServerException ex)
+        {
+            Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retval;
     }
 
 
