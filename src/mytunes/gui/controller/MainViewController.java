@@ -7,7 +7,11 @@ package mytunes.gui.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +20,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import mytunes.be.Playlist;
+import mytunes.be.Song;
+import mytunes.bll.IModel;
+import mytunes.bll.Model;
 
 /**
  *
@@ -29,27 +39,44 @@ public class MainViewController implements Initializable {
     @FXML
     private Button playButton;
     @FXML
-    private TableColumn<?, ?> playlistNameCol;
+    private TableColumn<Playlist, String> playlistNameCol;
     @FXML
-    private TableColumn<?, ?> playlistSongsCol;
+    private TableColumn<Playlist, String> playlistSongsCol;
     @FXML
-    private TableColumn<?, ?> playlistTimeCol;
+    private TableColumn<Playlist, Integer> playlistTimeCol;
     @FXML
-    private TableColumn<?, ?> songTitleCol;
+    private TableColumn<Song, String> songTitleCol;
     @FXML
-    private TableColumn<?, ?> songArtistCol;
+    private TableColumn<Song, String> songArtistCol;
     @FXML
-    private TableColumn<?, ?> songCategoryCol;
+    private TableColumn<Song, String> songCategoryCol;
     @FXML
-    private TableColumn<?, ?> songTimeCol;
+    private TableColumn<Song, Integer> songTimeCol;
+    @FXML
+    private TableView<Playlist> playlistTable;
+    @FXML
+    private TableView<Song> songsTable;
     
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private IModel model = new Model();
+    
+    private ObservableList<Song> songs;
+    
+    private ObservableList<Playlist> playlists;
+    
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        songs = FXCollections.observableArrayList();
+        songs.addAll(model.getAllSongs());
+        songsTable.setItems(songs);
+        songTitleCol.setCellValueFactory(new PropertyValueFactory("title"));
+        songArtistCol.setCellValueFactory(new PropertyValueFactory("artist"));
+        songCategoryCol.setCellValueFactory(new PropertyValueFactory("category"));
+        //songTimeCol.setCellValueFactory(new PropertyValueFactory("duration"));
+        
+        playlists = FXCollections.observableArrayList();
         
     }    
 
