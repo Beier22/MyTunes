@@ -5,10 +5,8 @@
  */
 package mytunes.dal;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-import java.sql.Connection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
+import mytunes.be.Song;
 
 /**
  *
@@ -18,13 +16,14 @@ public class TestDAO
 {
     public static void main(String[] kokot)
     {
-        try
+        SongDAO dao = new SongDAO();
+        List<Song> songs = dao.getAllSongs();
+        for (Song song : songs)
         {
-            Connection con = new ConnectionProvider().getConnection();
-        } catch (SQLServerException ex)
-        {
-            Logger.getLogger(TestDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(song);
         }
+        Song s = dao.getSong(1);
+        System.out.println(s);
     }
     
 }
