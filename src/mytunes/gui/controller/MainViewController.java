@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
@@ -174,6 +175,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void search(KeyEvent event) {
+        
     }
 
     @FXML
@@ -182,10 +184,23 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void pressPlay(ActionEvent event) {
+        getTableView();
     }
 
     @FXML
     private void pressNext(ActionEvent event) {
+    }
+
+    @FXML
+    private void selectPlaylist(MouseEvent event) {
+    }
+
+    @FXML
+    private void selectPlaylistSong(MouseEvent event) {
+    }
+
+    @FXML
+    private void selectSong(MouseEvent event) {
     }
     
 }
