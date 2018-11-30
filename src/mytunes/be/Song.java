@@ -20,7 +20,13 @@ public class Song {
     private int duration;
     private StringProperty artist;
     private StringProperty category;
+    private StringProperty durationString;
     
+    private StringProperty durationStringProperty()
+    {
+       if (durationString == null) durationString = new SimpleStringProperty(this, "durationString");
+            return durationString;  
+    }
     
     private StringProperty filePathProperty()
     {
@@ -96,6 +102,7 @@ public class Song {
 
     public void setDuration(int duration) {
         this.duration = duration;
+        //durationStringProperty().set(value);
     }
 
     public String getArtist() {
@@ -121,6 +128,8 @@ public class Song {
                 filePathProperty().getValue() + ", duration=" + duration + ", artist=" + artistProperty().getValue() 
                 + ", category=" + categoryProperty().getValue() + '}';
     }
+    
+    
     
     
 
