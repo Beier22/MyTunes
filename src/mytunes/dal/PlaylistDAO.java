@@ -33,10 +33,10 @@ public class PlaylistDAO
     
     public void deletePlaylist(Playlist p)
     {
-        /*try (Connection con = conProvider.getConnection()){
+        try (Connection con = conProvider.getConnection()){
             String sql = "DELETE FROM Playlists WHERE ID=?";
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, p.getName());
+            stmt.setInt(1, p.getID());
             stmt.execute();
         }
         catch(SQLServerException ex){
@@ -44,7 +44,7 @@ public class PlaylistDAO
         }
         catch(SQLException ex){
             Logger.getLogger(PlaylistDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }
     
     public void createPlaylist(Playlist p)

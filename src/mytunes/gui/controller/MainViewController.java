@@ -82,6 +82,22 @@ public class MainViewController implements Initializable {
         playlistNameCol.setCellValueFactory(new PropertyValueFactory("name"));
         
     }    
+    
+    public void updatePlaylistTable(){
+        
+        playlistTable.getItems().clear();
+        playlists.removeAll();
+        playlists.addAll(model.getAllPlaylists());
+        playlistTable.setItems(playlists);
+    }
+    
+    public void updateSongTable(){
+        
+        songsTable.getItems().clear();
+        songs.removeAll();
+        songs.addAll(model.getAllSongs());
+        songsTable.setItems(songs);
+    }
 
     @FXML
     private void newPlaylist(ActionEvent event) throws IOException {
@@ -93,7 +109,8 @@ public class MainViewController implements Initializable {
         s.setScene(new Scene(loader.load()));
         s.setTitle("New Playlist");
         PlaylistEditViewController questions = loader.<PlaylistEditViewController>getController();
-        s.show();
+        s.showAndWait();
+        updatePlaylistTable();
     }
 
     @FXML
@@ -108,6 +125,9 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void deletePlaylist(ActionEvent event) {
+        Playlist p = playlistTable.getSelectionModel().getSelectedItem();
+        model.deletePlaylist(p);
+        updatePlaylistTable();
     }
 
     @FXML
@@ -133,7 +153,8 @@ public class MainViewController implements Initializable {
         stage.setScene(new Scene(loader.load()));
         stage.setTitle("New Song");
         EditViewController songEdit = loader.<EditViewController>getController();
-        stage.show();
+        stage.showAndWait();
+        updateSongTable();
     }
 
     @FXML
@@ -148,6 +169,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void deleteSong(ActionEvent event) {
+        
     }
 
     @FXML
