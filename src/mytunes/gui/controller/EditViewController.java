@@ -15,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import mytunes.be.Song;
+import mytunes.dal.SongDAO;
 
 /**
  * FXML Controller class
@@ -53,7 +55,9 @@ public class EditViewController implements Initializable {
     @FXML
     private void pressSave(ActionEvent event) {
         //TODO
-        
+        Song s = new Song(titleField.getText(),artistField.getText(),fileField.getText(), "METAL"/*genreBox.getSelected()*/,50 );
+        SongDAO sd = new SongDAO();
+        sd.addSong(s);
         Stage st = (Stage) saveButton.getScene().getWindow();
         st.close();
     }

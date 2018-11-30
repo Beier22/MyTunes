@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import javafx.beans.property.StringProperty;
 
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
@@ -22,9 +23,17 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class SongTAG {
 
-    /**
-     * @param args
-     */
+   private String title;
+    private String filePath;
+    private int duration;
+    private String artist;
+    private String category;
+    private String durationString;
+                    
+           public SongTAG(String filePath){
+               
+                
+            }
     public static void main(String[] args) {
         String fileLocation = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\Undead.mp3";
 

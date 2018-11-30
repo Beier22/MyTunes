@@ -118,8 +118,8 @@ public class SongDAO
     {
         Song retval = null;
         try
-        {
-            retval = new Song(rs.getInt("ID"),rs.getString("Title"),rs.getString("Path"));
+        { 
+            retval = new Song(rs.getString("Title"),rs.getString("Artist"),rs.getString("Path"),rs.getString("Category"),rs.getInt("Duration"));
             retval.setDuration(rs.getInt("Duration"));
             retval.setCategory(rs.getString("Category"));
             retval.setArtist(rs.getString("Artist"));

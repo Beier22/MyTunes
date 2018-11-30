@@ -18,7 +18,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class SongTest {
 
     public static void main(String[] args) {
-        Song test = new Song(0,"","");
+        //Song test = new Song(0,"","");
         SimpleAudioPlayer player = new SimpleAudioPlayer();
         player.anything();
         

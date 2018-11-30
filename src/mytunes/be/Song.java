@@ -7,6 +7,7 @@ package mytunes.be;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import mytunes.dal.SongTAG;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Song {
     private StringProperty title;
     private StringProperty filePath;// = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\TEST.wav";
     private int duration;
+    private String stringDuration;
     private StringProperty artist;
     private StringProperty category;
     private StringProperty durationString;
@@ -52,10 +54,13 @@ public class Song {
             return category; 
     }
 
-    public Song(int ID, String title, String filePath) {
-        this.ID = ID;
+    public Song(String title, String artist, String filePath, String genre, int duration) {
+        categoryProperty().set(genre);
+        artistProperty().set(artist);
         titleProperty().set(title);
         filePathProperty().set(filePath);
+        stringDuration = (""+duration);
+        durationStringProperty().set(stringDuration);
         
        /* 
         try {
