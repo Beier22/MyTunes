@@ -59,6 +59,8 @@ public class MainViewController implements Initializable {
     private TableView<Playlist> playlistTable;
     @FXML
     private TableView<Song> songsTable;
+    @FXML
+    private Slider slider;
     
     private IModel model = new Model();
     
@@ -66,8 +68,11 @@ public class MainViewController implements Initializable {
     
     private ObservableList<Playlist> playlists;
     private SimpleAudioPlayer player = new SimpleAudioPlayer();
-    @FXML
-    private Slider slider;
+    
+    private Playlist selectedPlaylist;
+    private Song playingSong;
+    private Song selectedSong;
+    
     
     
     
@@ -189,7 +194,7 @@ public class MainViewController implements Initializable {
     @FXML
     private void pressPlay(ActionEvent event) {
         player.anything();
-        //getTableView();
+        
         
     }
 
