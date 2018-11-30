@@ -5,12 +5,15 @@
  */
 package mytunes.gui.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -24,6 +27,14 @@ public class EditViewController implements Initializable {
     private Button cancelButton;
     @FXML
     private Button saveButton;
+    @FXML
+    private TextField titleField;
+    @FXML
+    private TextField artistField;
+    @FXML
+    private TextField timeField;
+    @FXML
+    private TextField fileField;
 
     /**
      * Initializes the controller class.
@@ -45,6 +56,16 @@ public class EditViewController implements Initializable {
         
         Stage st = (Stage) saveButton.getScene().getWindow();
         st.close();
+    }
+
+    @FXML
+    private void chooseFile(ActionEvent event) throws IOException {
+        Stage s = new Stage();
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Open Resource File");
+    
+    fileField.setText(fileChooser.showOpenDialog(s).getAbsolutePath());
+        
     }
     
 }

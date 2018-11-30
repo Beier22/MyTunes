@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="253.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.EditViewController">
+<AnchorPane id="AnchorPane" prefHeight="253.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.EditViewController">
    <children>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="222.0" prefWidth="382.0">
          <children>
@@ -46,12 +46,12 @@
                   </VBox>
                   <VBox prefHeight="179.0" prefWidth="215.0">
                      <children>
-                        <TextField>
+                        <TextField fx:id="titleField" promptText="Custom name">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField>
+                        <TextField fx:id="artistField" promptText="Custom artist name">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
@@ -61,17 +61,17 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </ComboBox>
-                        <TextField>
+                        <TextField fx:id="timeField" disable="true">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField />
+                        <TextField fx:id="fileField" disable="true" />
                      </children>
                   </VBox>
                   <VBox alignment="BOTTOM_RIGHT" prefHeight="170.0" prefWidth="87.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Choose">
+                        <Button mnemonicParsing="false" onAction="#chooseFile" text="Choose">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
