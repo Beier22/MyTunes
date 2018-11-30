@@ -14,15 +14,21 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 /**
  *
  * @author Tothko
  */
 public class SimpleAudioPlayer {
 
-    
-    Long currentFrame;
+    String bip = "music\\Undead.mp3";
+    Media hit = new Media(new File(bip).toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(hit);
+    public void anything(){
+    mediaPlayer.play();
+    }
+    /*Long currentFrame;
     Clip clip;
     String status;
     AudioInputStream audioInputStream;
@@ -126,5 +132,7 @@ public class SimpleAudioPlayer {
         new File(filePath).getAbsoluteFile()); 
         clip.open(audioInputStream); 
         clip.loop(Clip.LOOP_CONTINUOUSLY); 
-    } 
+    } */
+    
+    
 }

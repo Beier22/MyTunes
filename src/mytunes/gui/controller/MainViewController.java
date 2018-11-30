@@ -26,6 +26,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import mytunes.be.Playlist;
+import mytunes.be.SimpleAudioPlayer;
 import mytunes.be.Song;
 import mytunes.bll.IModel;
 import mytunes.bll.Model;
@@ -63,7 +64,7 @@ public class MainViewController implements Initializable {
     private ObservableList<Song> songs;
     
     private ObservableList<Playlist> playlists;
-    
+    private SimpleAudioPlayer player = new SimpleAudioPlayer();
     
     
     
@@ -184,7 +185,9 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void pressPlay(ActionEvent event) {
-        getTableView();
+        player.anything();
+        //getTableView();
+        
     }
 
     @FXML
