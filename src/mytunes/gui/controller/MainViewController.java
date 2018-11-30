@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -65,6 +66,8 @@ public class MainViewController implements Initializable {
     
     private ObservableList<Playlist> playlists;
     private SimpleAudioPlayer player = new SimpleAudioPlayer();
+    @FXML
+    private Slider slider;
     
     
     
@@ -204,6 +207,10 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void selectSong(MouseEvent event) {
+    }
+
+    @FXML
+    private void dragSlider(MouseEvent event) {
     }
     
 }

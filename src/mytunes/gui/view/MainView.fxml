@@ -168,7 +168,7 @@
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label prefHeight="21.0" prefWidth="37.0" text="00:00" />
-                  <Slider />
+                  <Slider fx:id="slider" onDragDetected="#dragSlider" />
                </children>
             </HBox>
          </children>
