@@ -23,7 +23,7 @@ public class Song {
     private StringProperty artist;
     private StringProperty category;
     private StringProperty durationString;
-    
+
     private StringProperty durationStringProperty()
     {
        if (durationString == null) durationString = new SimpleStringProperty(this, "durationString");
