@@ -67,7 +67,7 @@ public class MainViewController implements Initializable {
     private ObservableList<Song> songs;
     
     private ObservableList<Playlist> playlists;
-    private SimpleAudioPlayer player = new SimpleAudioPlayer();
+   
     
     private Playlist selectedPlaylist;
     private Song playingSong;

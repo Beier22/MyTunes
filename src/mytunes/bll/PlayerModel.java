@@ -14,19 +14,37 @@ import mytunes.be.SimpleAudioPlayer;
 public class PlayerModel implements IPlayerModel{
     String path;
     SimpleAudioPlayer SAP;
-    
-    void play(){
-        
+
+    public PlayerModel(String path) {
+        this.path = path;
+        SAP = new SimpleAudioPlayer(path);
     }
-    void stop(){
-        
+    
+    @Override
+    public void play(){
+        SAP.play();
+    }
+    @Override
+    public void stop(){
+        SAP.stop();
     }
             
-    void playNext(){
-        
+    @Override
+    public void playNext(){
+        SAP.playNext(path);
     }
-    void playPrevious(){
-        
+    @Override
+    public void playPrevious(){
+        SAP.playPrevious(path);
     }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    
     
 }
