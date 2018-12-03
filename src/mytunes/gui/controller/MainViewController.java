@@ -29,8 +29,10 @@ import javafx.stage.Stage;
 import mytunes.be.Playlist;
 import mytunes.be.SimpleAudioPlayer;
 import mytunes.be.Song;
+import mytunes.bll.BLLController;
 import mytunes.bll.IModel;
 import mytunes.bll.Model;
+import mytunes.bll.PlayerModel;
 
 /**
  *
@@ -72,7 +74,7 @@ public class MainViewController implements Initializable {
     private Playlist selectedPlaylist;
     private Song playingSong;
     private Song selectedSong;
-    
+    private PlayerModel pmodel = new PlayerModel();
     
     
     
@@ -196,9 +198,18 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    private void pressPlay(ActionEvent event) {
-        
-        
+    private Song pressPlay(ActionEvent event) {
+        Song s = songsTable.getSelectionModel().getSelectedItem();
+       if(s = songsTable.getSelectionModel().getSelectedItem() != null){
+           pmodel.play(s);
+       }
+       else{
+           s = songsInPlaylistTable.getSelectionModel().getSelectedItem();
+                   if(songsInPlaylistTable.getSelectionModel().getSelectedItem() == null) return null;
+               
+                   }
+        pmodel.play(s);
+        return s;
         
     }
 

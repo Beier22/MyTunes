@@ -20,8 +20,13 @@ public class PlayerModel implements IPlayerModel{
         SAP = new SimpleAudioPlayer(path);
     }
     
+    public PlayerModel(){
+        
+    }
+    
     @Override
     public void play(){
+        SAP.s
         SAP.play();
     }
     @Override
@@ -38,13 +43,7 @@ public class PlayerModel implements IPlayerModel{
         SAP.playPrevious(path);
     }
 
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
+    
     
     
 }
