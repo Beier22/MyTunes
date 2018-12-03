@@ -150,6 +150,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void deleteFromPlaylist(ActionEvent event) {
+        
     }
 
     @FXML
@@ -164,6 +165,7 @@ public class MainViewController implements Initializable {
         stage.setTitle("New Song");
         EditViewController songEdit = loader.<EditViewController>getController();
         stage.showAndWait();
+        
         updateSongTable();
     }
 
@@ -179,7 +181,9 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void deleteSong(ActionEvent event) {
-        
+        Song s = songsTable.getSelectionModel().getSelectedItem();
+        model.deleteSong(s);
+        updateSongTable();
     }
 
     @FXML
@@ -193,7 +197,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void pressPlay(ActionEvent event) {
-        player.anything();
+        
         
         
     }

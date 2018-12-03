@@ -22,12 +22,36 @@ import javafx.util.Duration;
  * @author Tothko
  */
 public class SimpleAudioPlayer {
-
-    String bip = "music\\Undead.mp3";
-    Media hit = new Media(new File(bip).toURI().toString());
-    MediaPlayer mediaPlayer = new MediaPlayer(hit);
-    public void anything(){
-    mediaPlayer.play();
+    String filePath;
+    MediaPlayer mediaPlayer;
+    public SimpleAudioPlayer(String filePath){
+        this.filePath = filePath;
+        Media hit = new Media(new File(filePath).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(hit);
+    }
+   
+    public void play(){
+       mediaPlayer.play(); 
+    }
+    public void pause(){
+        mediaPlayer.pause();
+        
+    }
+    
+    public void stop(){
+        mediaPlayer.stop();
+    }
+    public void playNext(String next){
+        filePath = next;
+        mediaPlayer.pause();
+        
+    }
+    public void playPrevious(String previous){
+        filePath = previous;
+        mediaPlayer.pause();
+        
+    }
+  
     }
     /*Long currentFrame;
     Clip clip;
@@ -136,4 +160,4 @@ public class SimpleAudioPlayer {
     } */
     
     
-}
+
