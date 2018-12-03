@@ -217,15 +217,16 @@ public class MainViewController implements Initializable {
 
     @FXML
     private Song pressPlay(ActionEvent event) {
-        Song s = songsTable.getSelectionModel().getSelectedItem();
+        boolean currentlyPlaying = false;
+        Song s;
         if ((s = songsTable.getSelectionModel().getSelectedItem()) != null) {
+            s = songsTable.getSelectionModel().getSelectedItem();
+            pmodel.play(s);
+        } else if (songsInPlaylistTable.getSelectionModel().getSelectedItem() != null){
+            s = songsInPlaylistTable.getSelectionModel().getSelectedItem();
             pmodel.play(s);
         } else {
-            s = songsInPlaylistTable.getSelectionModel().getSelectedItem();
-            if (songsInPlaylistTable.getSelectionModel().getSelectedItem() == null) {
-                return null;
-            }
-
+            return null;
         }
         pmodel.play(s);
         return s;

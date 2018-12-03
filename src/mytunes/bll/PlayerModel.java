@@ -43,6 +43,10 @@ public class PlayerModel implements IPlayerModel{
     public void playPrevious(){
         SAP.playPrevious(path);
     }
+    
+    public void pause(){
+        SAP.pause();
+    }
 
     
     
