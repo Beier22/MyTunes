@@ -23,6 +23,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -76,6 +77,8 @@ public class MainViewController implements Initializable {
     private PlayerModel pmodel = new PlayerModel();
     @FXML
     private ListView<Song> songsInPlaylistTable;
+    @FXML
+    private TextField searchInput;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -188,6 +191,23 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void search(KeyEvent event) {
+        ObservableList<Playlist> playlistRs = FXCollections.observableArrayList();
+        ObservableList<Song> songRs = FXCollections.observableArrayList();
+        String input = searchInput.getText().toLowerCase();
+        
+        for (Song s : songs) {
+            if(s.getTitle().toLowerCase().contains(input))
+                songRs.add(s);
+        }
+        
+        songsTable.setItems(songRs);
+        
+        for (Playlist p : playlists) {
+            if(p.getName().toLowerCase().contains(input))
+                playlistRs.add(p);
+        }
+        
+        playlistTable.setItems(playlistRs);
 
     }
 
