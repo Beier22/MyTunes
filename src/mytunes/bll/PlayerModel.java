@@ -6,6 +6,7 @@
 package mytunes.bll;
 
 import mytunes.be.SimpleAudioPlayer;
+import mytunes.be.Song;
 
 /**
  *
@@ -25,9 +26,8 @@ public class PlayerModel implements IPlayerModel{
     }
     
     @Override
-    public void play(){
-        SAP.s
-        SAP.play();
+    public void play(Song s){
+        SAP.play(s.getFilePath());
     }
     @Override
     public void stop(){

@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,7 +30,6 @@ import javafx.stage.Stage;
 import mytunes.be.Playlist;
 import mytunes.be.SimpleAudioPlayer;
 import mytunes.be.Song;
-import mytunes.bll.BLLController;
 import mytunes.bll.IModel;
 import mytunes.bll.Model;
 import mytunes.bll.PlayerModel;
@@ -39,7 +39,7 @@ import mytunes.bll.PlayerModel;
  * @author mads_
  */
 public class MainViewController implements Initializable {
-    
+
     private Label label;
     @FXML
     private Button playButton;
@@ -63,21 +63,20 @@ public class MainViewController implements Initializable {
     private TableView<Song> songsTable;
     @FXML
     private Slider slider;
-    
+
     private IModel model = new Model();
-    
+
     private ObservableList<Song> songs;
-    
+
     private ObservableList<Playlist> playlists;
-   
-    
+
     private Playlist selectedPlaylist;
     private Song playingSong;
     private Song selectedSong;
     private PlayerModel pmodel = new PlayerModel();
-    
-    
-    
+    @FXML
+    private ListView<Song> songsInPlaylistTable;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         songs = FXCollections.observableArrayList();
@@ -87,24 +86,24 @@ public class MainViewController implements Initializable {
         songArtistCol.setCellValueFactory(new PropertyValueFactory("artist"));
         songCategoryCol.setCellValueFactory(new PropertyValueFactory("category"));
         //songTimeCol.setCellValueFactory(new PropertyValueFactory("duration"));
-        
+
         playlists = FXCollections.observableArrayList();
         playlists.addAll(model.getAllPlaylists());
         playlistTable.setItems(playlists);
         playlistNameCol.setCellValueFactory(new PropertyValueFactory("name"));
-        
-    }    
-    
-    public void updatePlaylistTable(){
-        
+
+    }
+
+    public void updatePlaylistTable() {
+
         playlistTable.getItems().clear();
         playlists.removeAll();
         playlists.addAll(model.getAllPlaylists());
         playlistTable.setItems(playlists);
     }
-    
-    public void updateSongTable(){
-        
+
+    public void updateSongTable() {
+
         songsTable.getItems().clear();
         songs.removeAll();
         songs.addAll(model.getAllSongs());
@@ -113,9 +112,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void newPlaylist(ActionEvent event) throws IOException {
-        
-        
-        
+
         Stage s = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/PlaylistEditView.fxml"));
         s.setScene(new Scene(loader.load()));
@@ -152,7 +149,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void deleteFromPlaylist(ActionEvent event) {
-        
+
     }
 
     @FXML
@@ -167,7 +164,7 @@ public class MainViewController implements Initializable {
         stage.setTitle("New Song");
         EditViewController songEdit = loader.<EditViewController>getController();
         stage.showAndWait();
-        
+
         updateSongTable();
     }
 
@@ -190,7 +187,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void search(KeyEvent event) {
-        
+
     }
 
     @FXML
@@ -200,17 +197,18 @@ public class MainViewController implements Initializable {
     @FXML
     private Song pressPlay(ActionEvent event) {
         Song s = songsTable.getSelectionModel().getSelectedItem();
-       if((s = songsTable.getSelectionModel().getSelectedItem()) != null){
-           pmodel.play(s);
-       }
-       else{
-           s = songsInPlaylistTable.getSelectionModel().getSelectedItem();
-                   if(songsInPlaylistTable.getSelectionModel().getSelectedItem() == null) return null;
-               
-                   }
+        if ((s = songsTable.getSelectionModel().getSelectedItem()) != null) {
+            pmodel.play(s);
+        } else {
+            s = songsInPlaylistTable.getSelectionModel().getSelectedItem();
+            if (songsInPlaylistTable.getSelectionModel().getSelectedItem() == null) {
+                return null;
+            }
+
+        }
         pmodel.play(s);
         return s;
-        
+
     }
 
     @FXML
@@ -232,5 +230,5 @@ public class MainViewController implements Initializable {
     @FXML
     private void dragSlider(MouseEvent event) {
     }
-    
+
 }

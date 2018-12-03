@@ -94,6 +94,7 @@ public class Song {
     }
 
     public String getFilePath() {
+        System.out.println(filePathProperty().getValue());
         return filePathProperty().getValue();
     }
 

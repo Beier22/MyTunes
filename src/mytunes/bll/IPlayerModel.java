@@ -5,12 +5,14 @@
  */
 package mytunes.bll;
 
+import mytunes.be.Song;
+
 /**
  *
  * @author Tothko
  */
 public interface IPlayerModel {
-    void play();
+    void play(Song s);
     void stop();
     void playNext();
     void playPrevious();

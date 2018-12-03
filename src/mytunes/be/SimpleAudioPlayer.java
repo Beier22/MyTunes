@@ -24,13 +24,16 @@ import javafx.util.Duration;
 public class SimpleAudioPlayer {
     String filePath;
     MediaPlayer mediaPlayer;
+    Media hit;
     public SimpleAudioPlayer(String filePath){
         this.filePath = filePath;
-        Media hit = new Media(new File(filePath).toURI().toString());
+        hit = new Media(new File(filePath).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(hit);
     }
    
-    public void play(){
+    public void play(String path){
+       hit = new Media(new File(path).toURI().toString());
+       MediaPlayer mediaPlayer = new MediaPlayer(hit);
        mediaPlayer.play(); 
     }
     public void pause(){
