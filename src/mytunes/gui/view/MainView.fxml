@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -156,8 +157,9 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="28.0" prefWidth="229.0">
                <children>
-                  <Label text="0%" />
-                  <Slider />
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
+                  <Slider prefHeight="16.0" />
+                  <Label prefHeight="16.0" text="0%" />
                </children>
             </HBox>
          </children>
@@ -167,8 +169,9 @@
             <Label text="(none) ... Is Playing" />
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="21.0" prefWidth="37.0" text="00:00" />
-                  <Slider fx:id="slider" onDragDetected="#dragSlider" />
+                  <Label prefHeight="16.0" prefWidth="37.0" text="00:00" />
+                  <Slider fx:id="slider" onDragDetected="#dragSlider" prefHeight="16.0" />
+                  <Label prefHeight="16.0" prefWidth="37.0" text="00:00" />
                </children>
             </HBox>
          </children>
