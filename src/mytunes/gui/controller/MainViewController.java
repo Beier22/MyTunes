@@ -91,6 +91,7 @@ public class MainViewController implements Initializable {
         playlists.addAll(model.getAllPlaylists());
         playlistTable.setItems(playlists);
         playlistNameCol.setCellValueFactory(new PropertyValueFactory("name"));
+        
 
     }
 

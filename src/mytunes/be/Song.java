@@ -17,7 +17,7 @@ public class Song {
 
     private int ID;
     private StringProperty title;
-    private StringProperty filePath;// = "D:\\School\\NetbeansProject\\MojeTunes2\\MyTunes\\music\\TEST.wav";
+    private StringProperty filePath;// = "\\music\\TEST.wav";
     private int duration;
     private String stringDuration;
     private StringProperty artist;
@@ -80,7 +80,9 @@ public class Song {
     public void play(int time) {
 
     }
-
+    public void setID(int ID) {
+        this.ID = ID;
+    }
     public int getID() {
         return ID;
     }
@@ -94,7 +96,7 @@ public class Song {
     }
 
     public String getFilePath() {
-        System.out.println(filePathProperty().getValue());
+       
         return filePathProperty().getValue();
     }
 

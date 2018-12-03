@@ -18,11 +18,12 @@ public class PlayerModel implements IPlayerModel{
 
     public PlayerModel(String path) {
         this.path = path;
-        SAP = new SimpleAudioPlayer(path);
+        SAP = new SimpleAudioPlayer();
+        
     }
     
     public PlayerModel(){
-        
+        SAP = new SimpleAudioPlayer();
     }
     
     @Override

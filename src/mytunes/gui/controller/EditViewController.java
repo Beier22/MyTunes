@@ -68,7 +68,8 @@ public class EditViewController implements Initializable {
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("Open Resource File");
     
-    fileField.setText(fileChooser.showOpenDialog(s).getAbsolutePath());
+    fileField.setText(fileChooser.showOpenDialog(s).getPath());
+        System.out.println(fileField.getText());
         
     }
     

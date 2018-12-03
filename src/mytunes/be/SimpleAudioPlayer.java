@@ -23,18 +23,22 @@ import javafx.util.Duration;
  */
 public class SimpleAudioPlayer {
     String filePath;
-    MediaPlayer mediaPlayer;
+    static MediaPlayer mediaPlayer;
     Media hit;
-    public SimpleAudioPlayer(String filePath){
-        this.filePath = filePath;
+    public SimpleAudioPlayer(){
+        /*this.filePath = filePath;
         hit = new Media(new File(filePath).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(hit);
+        MediaPlayer mediaPlayer = new MediaPlayer(hit);*/
     }
    
     public void play(String path){
+        
+       System.out.println(path);
        hit = new Media(new File(path).toURI().toString());
-       MediaPlayer mediaPlayer = new MediaPlayer(hit);
+       mediaPlayer = new MediaPlayer(hit);
+       mediaPlayer.stop();
        mediaPlayer.play(); 
+       
     }
     public void pause(){
         mediaPlayer.pause();

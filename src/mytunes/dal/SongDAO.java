@@ -34,6 +34,7 @@ public class SongDAO
     {
         try(Connection con = conProvider.getConnection())
         {
+            System.out.println(s.getID());
             String sql = "DELETE FROM PlaylistsSongs WHERE SongID = ?; DELETE FROM Songs WHERE ID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, s.getID());
@@ -120,9 +121,7 @@ public class SongDAO
         try
         { 
             retval = new Song(rs.getString("Title"),rs.getString("Artist"),rs.getString("Path"),rs.getString("Category"),rs.getInt("Duration"));
-            retval.setDuration(rs.getInt("Duration"));
-            retval.setCategory(rs.getString("Category"));
-            retval.setArtist(rs.getString("Artist"));
+            retval.setID(rs.getInt("ID"));
         } catch (SQLException ex)
         {
             Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
