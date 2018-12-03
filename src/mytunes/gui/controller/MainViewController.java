@@ -79,6 +79,9 @@ public class MainViewController implements Initializable {
     private ListView<Song> songsInPlaylistTable;
     @FXML
     private TextField searchInput;
+    
+    
+    private boolean currentlyPlaying = false;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -217,18 +220,21 @@ public class MainViewController implements Initializable {
 
     @FXML
     private Song pressPlay(ActionEvent event) {
-        boolean currentlyPlaying = false;
         Song s;
-        if ((s = songsTable.getSelectionModel().getSelectedItem()) != null) {
+        if ((s = songsTable.getSelectionModel().getSelectedItem()) != null && currentlyPlaying == false) {
             s = songsTable.getSelectionModel().getSelectedItem();
             pmodel.play(s);
-        } else if (songsInPlaylistTable.getSelectionModel().getSelectedItem() != null){
+            currentlyPlaying = true;
+        } else if (songsInPlaylistTable.getSelectionModel().getSelectedItem() != null && currentlyPlaying == false){
             s = songsInPlaylistTable.getSelectionModel().getSelectedItem();
             pmodel.play(s);
+            currentlyPlaying = true;
+        } else if (currentlyPlaying == true) {
+            pmodel.pause();
+            currentlyPlaying = false;
         } else {
             return null;
         }
-        pmodel.play(s);
         return s;
 
     }
