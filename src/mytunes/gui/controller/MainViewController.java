@@ -161,6 +161,14 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void addToPlaylist(ActionEvent event) {
+        Song s;
+        Playlist p;
+        if(playlistTable.getSelectionModel().getSelectedItem() != null && songsTable.getSelectionModel().getSelectedItem() != null)
+        {
+            s = songsTable.getSelectionModel().getSelectedItem();
+            p = playlistTable.getSelectionModel().getSelectedItem();
+            model.addSongToPlaylist(p, s);
+        }
     }
 
     @FXML

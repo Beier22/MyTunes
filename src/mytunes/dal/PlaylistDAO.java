@@ -130,5 +130,23 @@ public class PlaylistDAO
         return retval;
     }
     
+    public void addSongToPlaylist(Playlist p, Song s){
+        try(Connection con = conProvider.getConnection())
+        {
+            String sql =    "INSERT INTO PlaylistsSongs (PlaylistID, SongID)\n" +
+                            "VALUES (?,?)";
+            PreparedStatement psmt = con.prepareStatement(sql);
+            psmt.setInt(1,p.getID());
+            psmt.setInt(2, s.getID());
+            psmt.execute();
+        } catch (SQLServerException ex)
+        {
+            Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     
 }

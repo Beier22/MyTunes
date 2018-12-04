@@ -67,5 +67,10 @@ public class Model implements IModel
     public ObservableList<Song> getPlaylistSongs(Playlist p) {
         return playlistDao.getPlaylistSongs(p);
     }
+
+    @Override
+    public void addSongToPlaylist(Playlist p, Song s) {
+        playlistDao.addSongToPlaylist(p, s);
+    }
     
 }

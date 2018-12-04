@@ -23,4 +23,5 @@ public interface IModel
     void deleteSong(Song s);
     void deletePlaylist(Playlist p);    
     ObservableList<Song> getPlaylistSongs(Playlist p);
+    void addSongToPlaylist(Playlist p, Song s);
 }
