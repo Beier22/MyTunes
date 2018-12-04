@@ -168,6 +168,7 @@ public class MainViewController implements Initializable {
             s = songsTable.getSelectionModel().getSelectedItem();
             p = playlistTable.getSelectionModel().getSelectedItem();
             model.addSongToPlaylist(p, s);
+            selectPlaylist(null);
         }
     }
 

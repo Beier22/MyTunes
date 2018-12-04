@@ -31,7 +31,7 @@ public class PlaylistDAO
     
     public PlaylistDAO()
     {
-        conProvider = new LocalDbProvider();
+        conProvider = new ConnectionProvider();
     }
     
     public void deletePlaylist(Playlist p)

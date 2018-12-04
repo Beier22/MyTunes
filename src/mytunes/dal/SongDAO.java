@@ -27,7 +27,7 @@ public class SongDAO
 
     public SongDAO()
     {
-        conProvider = new LocalDbProvider();
+        conProvider = new ConnectionProvider();
     }
     
     public void removeSong(Song s)
