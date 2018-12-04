@@ -6,6 +6,7 @@
 package mytunes.bll;
 
 import java.util.List;
+import javafx.collections.ObservableList;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
 import mytunes.dal.PlaylistDAO;
@@ -60,6 +61,11 @@ public class Model implements IModel
     public void deletePlaylist(Playlist p)
     {
         playlistDao.deletePlaylist(p); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ObservableList<Song> getPlaylistSongs(Playlist p) {
+        return playlistDao.getPlaylistSongs(p);
     }
     
 }

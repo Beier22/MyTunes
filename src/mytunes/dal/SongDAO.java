@@ -115,7 +115,7 @@ public class SongDAO
         return retval;
     }
     
-    private Song songFromRs(ResultSet rs)
+    public static Song songFromRs(ResultSet rs)
     {
         Song retval = null;
         try

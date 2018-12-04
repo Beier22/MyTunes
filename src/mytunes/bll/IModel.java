@@ -6,6 +6,7 @@
 package mytunes.bll;
 
 import java.util.List;
+import javafx.collections.ObservableList;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
 
@@ -21,4 +22,5 @@ public interface IModel
     void savePlaylist(Playlist p);
     void deleteSong(Song s);
     void deletePlaylist(Playlist p);    
+    ObservableList<Song> getPlaylistSongs(Playlist p);
 }

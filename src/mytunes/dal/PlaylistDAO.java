@@ -15,8 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
+import static mytunes.dal.SongDAO.songFromRs;
 
 /**
  *
@@ -103,7 +106,29 @@ public class PlaylistDAO
         return retval;
     }
 
-
+    public ObservableList<Song> getPlaylistSongs(Playlist p){
+        ObservableList<Song> retval = FXCollections.observableArrayList();
+        try(Connection con = conProvider.getConnection())
+        {
+            String sql =    "SELECT Songs.Title, Songs.Artist, Songs.Path, Songs.Category, Songs.Duration, Songs.ID\n" +
+                            "FROM Songs\n" +
+                            "JOIN PlaylistsSongs ON Songs.ID = PlaylistsSongs.SongID\n" +
+                            "WHERE PlaylistID = " + p.getID();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next())
+            {
+                retval.add(songFromRs(rs));
+            }
+        } catch (SQLServerException ex)
+        {
+            Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SongDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retval;
+    }
     
     
 }

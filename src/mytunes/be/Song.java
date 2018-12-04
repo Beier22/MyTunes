@@ -132,9 +132,7 @@ public class Song {
     @Override
     public String toString()
     {
-        return "Song{" + "ID=" + ID + ", title=" + titleProperty().getValue() + ", filePath=" + 
-                filePathProperty().getValue() + ", duration=" + duration + ", artist=" + artistProperty().getValue() 
-                + ", category=" + categoryProperty().getValue() + '}';
+        return "" + title.getValue() + ", " + artist.getValue();
     }
     
     
