@@ -255,8 +255,11 @@ public class MainViewController implements Initializable {
     private void selectPlaylist(MouseEvent event) {
         ObservableList<Song> songs = FXCollections.observableArrayList();
         Playlist p = playlistTable.getSelectionModel().getSelectedItem();
-        songs = model.getPlaylistSongs(p);
-        songsInPlaylistTable.setItems(songs);
+        if(p!=null)
+        {
+            songs = model.getPlaylistSongs(p);
+            songsInPlaylistTable.setItems(songs);
+        }
         
     }
 

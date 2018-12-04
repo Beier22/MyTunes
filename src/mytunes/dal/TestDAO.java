@@ -41,7 +41,7 @@ public class TestDAO {
         while ((st = br.readLine()) != null) {
             System.out.println(st);
         }*/
-         LocalDbProvider.getLocalConnection("testdb.db").close();
+       //  LocalDbProvider.getLocalConnection("testdb.db").close();
         
     }
 

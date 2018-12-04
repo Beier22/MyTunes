@@ -27,11 +27,11 @@ import static mytunes.dal.SongDAO.songFromRs;
  */
 public class PlaylistDAO
 {
-    private ConnectionProvider conProvider;
+    private IConnectionProvider conProvider;
     
     public PlaylistDAO()
     {
-        conProvider = new ConnectionProvider();
+        conProvider = new LocalDbProvider();
     }
     
     public void deletePlaylist(Playlist p)

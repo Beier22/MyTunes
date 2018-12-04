@@ -23,11 +23,11 @@ import mytunes.be.Song;
  */
 public class SongDAO
 {
-    private ConnectionProvider conProvider;
+    private IConnectionProvider conProvider;
 
     public SongDAO()
     {
-        conProvider = new ConnectionProvider();
+        conProvider = new LocalDbProvider();
     }
     
     public void removeSong(Song s)

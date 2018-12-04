@@ -46,8 +46,6 @@ public class LocalDbProvider implements IConnectionProvider
                 retval = conn;
                 DatabaseMetaData meta = conn.getMetaData();
                 {
-                    System.out.println("The driver name is " + meta.getDriverName());
-                    System.out.println("A new database has been created.");
                     for (String sql : sqls)
                     {
                         Statement stmt = conn.createStatement();
