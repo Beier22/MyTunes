@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import mytunes.be.Song;
 
@@ -19,7 +20,7 @@ import mytunes.be.Song;
  */
 public class TestDAO {
 
-    public static void main(String[] kokot) throws FileNotFoundException, IOException {
+    public static void main(String[] kokot) throws FileNotFoundException, IOException, SQLException {
         /*
         SongDAO dao = new SongDAO();
         List<Song> songs = dao.getAllSongs();
@@ -29,7 +30,7 @@ public class TestDAO {
         }
         Song s = dao.getSong(1);
         System.out.println(s);
-         */
+         *//*
 
         File file = new File("music\\A file.txt");
         String path = file.getPath();
@@ -39,7 +40,8 @@ public class TestDAO {
         String st;
         while ((st = br.readLine()) != null) {
             System.out.println(st);
-        }
+        }*/
+         LocalDbProvider.getLocalConnection("testdb.db").close();
         
     }
 

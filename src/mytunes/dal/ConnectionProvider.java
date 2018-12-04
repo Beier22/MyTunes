@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Marek
  */
-public class ConnectionProvider
+public class ConnectionProvider implements IConnectionProvider
 {
     private SQLServerDataSource ds; 
     private Properties prop;
@@ -30,9 +30,16 @@ public class ConnectionProvider
         loadProperties();
     }
     
-    public Connection getConnection() throws SQLServerException
+    public Connection getConnection()
     {
-        return ds.getConnection();
+        try
+        {
+            return ds.getConnection();
+        } catch (SQLServerException ex)
+        {
+            Logger.getLogger(ConnectionProvider.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     private void loadProperties()
