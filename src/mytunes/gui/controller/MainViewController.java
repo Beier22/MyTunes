@@ -41,34 +41,11 @@ import mytunes.bll.PlayerModel;
  */
 public class MainViewController implements Initializable {
 
-    private Label label;
-    @FXML
-    private Button playButton;
-    @FXML
-    private TableColumn<Playlist, String> playlistNameCol;
-    @FXML
-    private TableColumn<Playlist, String> playlistSongsCol;
-    @FXML
-    private TableColumn<Playlist, Integer> playlistTimeCol;
-    @FXML
-    private TableColumn<Song, String> songTitleCol;
-    @FXML
-    private TableColumn<Song, String> songArtistCol;
-    @FXML
-    private TableColumn<Song, String> songCategoryCol;
-    @FXML
-    private TableColumn<Song, Integer> songTimeCol;
-    @FXML
-    private TableView<Playlist> playlistTable;
-    @FXML
-    private TableView<Song> songsTable;
-    @FXML
-    private Slider slider;
+ 
 
     private IModel model = new Model();
 
     private ObservableList<Song> songs;
-
     private ObservableList<Playlist> playlists;
 
     private Playlist selectedPlaylist;
@@ -77,26 +54,49 @@ public class MainViewController implements Initializable {
     private PlayerModel pmodel = new PlayerModel();
     @FXML
     private ListView<Song> songsInPlaylistTable;
+    
+    @FXML
+    private ListView<Playlist> playlistTable;
+            
+    private ListView<Song> loadedPlaylist;
     @FXML
     private TextField searchInput;
     
-    
     private boolean currentlyPlaying = false;
+    @FXML
+    private Button buttonPrevious;
+    @FXML
+    private Button buttonPlay;
+    @FXML
+    private Button buttonNext;
+    @FXML
+    private TextField songPlayingField;
+    @FXML
+    private Slider sliderChannels;
+    @FXML
+    private Slider sliderVolume;
+    @FXML
+    private Slider sliderSongtime;
+    @FXML
+    private Button buttonStop;
+    @FXML
+    private Button buttonShuffle;
+    @FXML
+    private Button buttonRepeat;
+    @FXML
+    private Button buttonRepeatCount;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         songs = FXCollections.observableArrayList();
-        songs.addAll(model.getAllSongs());
-        songsTable.setItems(songs);
-        songTitleCol.setCellValueFactory(new PropertyValueFactory("title"));
-        songArtistCol.setCellValueFactory(new PropertyValueFactory("artist"));
-        songCategoryCol.setCellValueFactory(new PropertyValueFactory("category"));
+        songs.addAll(model.getAllSongs());;
         //songTimeCol.setCellValueFactory(new PropertyValueFactory("duration"));
 
         playlists = FXCollections.observableArrayList();
         playlists.addAll(model.getAllPlaylists());
         playlistTable.setItems(playlists);
-        playlistNameCol.setCellValueFactory(new PropertyValueFactory("name"));
+        
         
 
     }
@@ -109,15 +109,14 @@ public class MainViewController implements Initializable {
         playlistTable.setItems(playlists);
     }
 
-    public void updateSongTable() {
+    /*public void updateSongTable() {
 
         songsTable.getItems().clear();
         songs.removeAll();
         songs.addAll(model.getAllSongs());
         songsTable.setItems(songs);
-    }
+    }*/
 
-    @FXML
     private void newPlaylist(ActionEvent event) throws IOException {
 
         Stage s = new Stage();
@@ -129,7 +128,6 @@ public class MainViewController implements Initializable {
         updatePlaylistTable();
     }
 
-    @FXML
     private void editPlaylist(ActionEvent event) throws IOException {
         Stage s = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/PlaylistEditView.fxml"));
@@ -139,29 +137,15 @@ public class MainViewController implements Initializable {
         s.show();
     }
 
-    @FXML
     private void deletePlaylist(ActionEvent event) {
         Playlist p = playlistTable.getSelectionModel().getSelectedItem();
         model.deletePlaylist(p);
         updatePlaylistTable();
     }
 
-    @FXML
-    private void moveUp(ActionEvent event) {
-    }
 
-    @FXML
-    private void moveDown(ActionEvent event) {
-    }
-
-    @FXML
-    private void deleteFromPlaylist(ActionEvent event) {
-
-    }
-
-    @FXML
     private void addToPlaylist(ActionEvent event) {
-        Song s;
+        /*Song s;
         Playlist p;
         if(playlistTable.getSelectionModel().getSelectedItem() != null && songsTable.getSelectionModel().getSelectedItem() != null)
         {
@@ -169,22 +153,20 @@ public class MainViewController implements Initializable {
             p = playlistTable.getSelectionModel().getSelectedItem();
             model.addSongToPlaylist(p, s);
             selectPlaylist(null);
-        }
+        }*/
     }
 
-    @FXML
     private void newSong(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
+        /*Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/EditView.fxml"));
         stage.setScene(new Scene(loader.load()));
         stage.setTitle("New Song");
         EditViewController songEdit = loader.<EditViewController>getController();
         stage.showAndWait();
 
-        updateSongTable();
+        updateSongTable();*/
     }
 
-    @FXML
     private void editSong(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/EditView.fxml"));
@@ -194,16 +176,14 @@ public class MainViewController implements Initializable {
         stage.show();
     }
 
-    @FXML
     private void deleteSong(ActionEvent event) {
-        Song s = songsTable.getSelectionModel().getSelectedItem();
+        /*Song s = songsTable.getSelectionModel().getSelectedItem();
         model.deleteSong(s);
-        updateSongTable();
+        updateSongTable();*/
     }
 
-    @FXML
     private void search(KeyEvent event) {
-        ObservableList<Playlist> playlistRs = FXCollections.observableArrayList();
+       /* ObservableList<Playlist> playlistRs = FXCollections.observableArrayList();
         ObservableList<Song> songRs = FXCollections.observableArrayList();
         String input = searchInput.getText().toLowerCase();
         
@@ -220,7 +200,7 @@ public class MainViewController implements Initializable {
         }
         
         playlistTable.setItems(playlistRs);
-
+*/
     }
 
     @FXML
@@ -230,12 +210,8 @@ public class MainViewController implements Initializable {
     @FXML
     private Song pressPlay(ActionEvent event) {
         Song s;
-        if ((s = songsTable.getSelectionModel().getSelectedItem()) != null && currentlyPlaying == false) {
-            s = songsTable.getSelectionModel().getSelectedItem();
-            pmodel.play(s);
-            currentlyPlaying = true;
-        } else if (songsInPlaylistTable.getSelectionModel().getSelectedItem() != null && currentlyPlaying == false){
-            s = songsInPlaylistTable.getSelectionModel().getSelectedItem();
+        if ((s = loadedPlaylist.getSelectionModel().getSelectedItem()) != null && currentlyPlaying == false) {
+            s = loadedPlaylist.getSelectionModel().getSelectedItem();
             pmodel.play(s);
             currentlyPlaying = true;
         } else if (currentlyPlaying == true) {
@@ -252,7 +228,6 @@ public class MainViewController implements Initializable {
     private void pressNext(ActionEvent event) {
     }
 
-    @FXML
     private void selectPlaylist(MouseEvent event) {
         ObservableList<Song> songs = FXCollections.observableArrayList();
         Playlist p = playlistTable.getSelectionModel().getSelectedItem();
@@ -269,11 +244,19 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    private void selectSong(MouseEvent event) {
+    private void pressStop(ActionEvent event) {
     }
 
     @FXML
-    private void dragSlider(MouseEvent event) {
+    private void pressShuffle(ActionEvent event) {
+    }
+
+    @FXML
+    private void pressRepeat(ActionEvent event) {
+    }
+
+    @FXML
+    private void pressRepeatCount(ActionEvent event) {
     }
 
 }

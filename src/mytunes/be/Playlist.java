@@ -50,4 +50,10 @@ public class Playlist {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return ID + ". " + name;
+    }
+    
+
 }
