@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -14,14 +15,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.MainViewController">
+<AnchorPane id="anchorPane" prefHeight="720.0" prefWidth="1024.0" styleClass="anchorPane" stylesheets="@../css/MainView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.MainViewController">
     <children>
-      <HBox layoutX="39.0" layoutY="94.0" prefHeight="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <HBox layoutX="39.0" layoutY="94.0" prefHeight="600.0" stylesheets="@../css/MainView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <VBox prefHeight="500.0" prefWidth="290.0">
                <children>
-                  <Label text="Playlists" />
-                  <TableView fx:id="playlistTable" onMouseReleased="#selectPlaylist" prefHeight="500.0" prefWidth="200.0">
+                  <Label styleClass="text" text="Playlists" />
+                  <TableView fx:id="playlistTable" onMouseReleased="#selectPlaylist" prefHeight="500.0" prefWidth="200.0" styleClass="text" stylesheets="@../css/MainView.css">
                     <columns>
                       <TableColumn fx:id="playlistNameCol" prefWidth="182.0" text="Name" />
                       <TableColumn fx:id="playlistSongsCol" prefWidth="53.0" text="Songs" />
@@ -33,7 +34,7 @@
                   </TableView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#newPlaylist" text="New...">
+                        <Button mnemonicParsing="false" onAction="#newPlaylist" styleClass="text" text="New...">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -53,8 +54,8 @@
             </VBox>
             <VBox prefHeight="500.0" prefWidth="250.0">
                <children>
-                  <Label text="Songs on Playlist" />
-                  <ListView fx:id="songsInPlaylistTable" onMouseReleased="#selectPlaylistSong" prefHeight="500.0" prefWidth="200.0">
+                  <Label styleClass="text" text="Songs on Playlist" />
+                  <ListView fx:id="songsInPlaylistTable" onMouseReleased="#selectPlaylistSong" prefHeight="500.0" prefWidth="200.0" styleClass="text">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -86,10 +87,10 @@
             </Button>
             <VBox prefHeight="500.0" prefWidth="400.0">
                <children>
-                  <Label text="Songs" />
+                  <Label styleClass="text" text="Songs" />
                   <TableView fx:id="songsTable" onMouseReleased="#selectSong" prefHeight="500.0" prefWidth="400.0">
                     <columns>
-                      <TableColumn fx:id="songTitleCol" prefWidth="162.0" text="Title" />
+                      <TableColumn fx:id="songTitleCol" minWidth="8.0" prefWidth="162.0" text="Title" />
                       <TableColumn fx:id="songArtistCol" minWidth="0.0" prefWidth="106.0" text="Artist" />
                         <TableColumn fx:id="songCategoryCol" prefWidth="76.0" text="Category" />
                         <TableColumn fx:id="songTimeCol" prefWidth="55.0" text="Time" />
@@ -120,28 +121,28 @@
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="786.0" layoutY="16.0" prefHeight="66.0" prefWidth="270.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="16.0">
+      <HBox alignment="CENTER" layoutX="786.0" layoutY="16.0" prefHeight="66.0" prefWidth="270.0" stylesheets="@../css/MainView.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="16.0">
          <children>
-            <Label text="Filter:">
+            <Label styleClass="text" stylesheets="@../css/MainView.css" text="Filter:">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
                <padding>
                   <Insets right="10.0" />
                </padding></Label>
-            <TextField fx:id="searchInput" onKeyReleased="#search">
+            <TextField id="KOKOT" fx:id="searchInput" onKeyReleased="#search" styleClass="text-input" stylesheets="@../css/MainView.css">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </TextField>
          </children>
       </HBox>
-      <VBox layoutX="144.0" layoutY="13.0" prefHeight="95.0" prefWidth="229.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+      <VBox layoutX="144.0" layoutY="13.0" prefHeight="95.0" prefWidth="229.0" stylesheets="@../css/MainView.css" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="229.0">
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="229.0" stylesheets="@../css/MainView.css">
                <children>
-                  <Button mnemonicParsing="false" onAction="#pressPrevious" text="◀◀" />
-                  <Button id="playButton" fx:id="playButton" maxHeight="50.0" maxWidth="50.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#pressPlay" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 360;" text="▶" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#pressPrevious" styleClass="buttonPrevious" stylesheets="@../css/MainView.css" />
+                  <Button id="buttonPlay" fx:id="playButton" maxHeight="50.0" maxWidth="50.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#pressPlay" prefHeight="50.0" prefWidth="50.0" stylesheets="@../css/MainView.css" textAlignment="CENTER">
                      <font>
                         <Font name="Courier New" size="40.0" />
                      </font>
@@ -151,11 +152,15 @@
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
+                     <styleClass>
+                        <String fx:value="playButton" />
+                        <String fx:value="buttonPlay" />
+                     </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#pressNext" text="▶▶" />
+                  <Button mnemonicParsing="false" onAction="#pressNext" styleClass="buttonNext" stylesheets="@../css/MainView.css" />
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="28.0" prefWidth="229.0">
+            <HBox alignment="TOP_CENTER" prefHeight="28.0" prefWidth="229.0" stylesheets="@../css/MainView.css">
                <children>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" />
                   <Slider prefHeight="16.0" />
@@ -164,14 +169,14 @@
             </HBox>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="283.0" layoutY="14.0" prefHeight="50.0" prefWidth="422.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="32.0">
+      <VBox alignment="TOP_CENTER" layoutX="283.0" layoutY="14.0" prefHeight="50.0" prefWidth="422.0" stylesheets="@../css/MainView.css" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="32.0">
          <children>
-            <Label text="(none) ... Is Playing" />
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+            <Label styleClass="text" stylesheets="@../css/MainView.css" text="(none) ... Is Playing" />
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/MainView.css">
                <children>
-                  <Label prefHeight="16.0" prefWidth="37.0" text="00:00" />
-                  <Slider fx:id="slider" onDragDetected="#dragSlider" prefHeight="16.0" />
-                  <Label prefHeight="16.0" prefWidth="37.0" text="00:00" />
+                  <Label prefHeight="16.0" prefWidth="37.0" styleClass="text" stylesheets="@../css/MainView.css" text="00:00" />
+                  <Slider fx:id="slider" onDragDetected="#dragSlider" prefHeight="16.0" stylesheets="@../css/MainView.css" />
+                  <Label prefHeight="16.0" prefWidth="37.0" styleClass="text" stylesheets="@../css/MainView.css" text="00:00" />
                </children>
             </HBox>
          </children>
