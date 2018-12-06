@@ -58,11 +58,11 @@ public class MainViewController implements Initializable {
     @FXML
     private ListView<Playlist> playlistTable;
             
-    private ListView<Song> loadedPlaylist;
     @FXML
-    private TextField searchInput;
+    private ListView<Song> loadedPlaylist;
     
-    private boolean currentlyPlaying = false;
+    @FXML
+    private Label currentlyPlaying;
     @FXML
     private Button buttonPrevious;
     @FXML
@@ -86,16 +86,20 @@ public class MainViewController implements Initializable {
     @FXML
     private Button buttonRepeatCount;
     
+    private boolean isPlaying = false;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         songs = FXCollections.observableArrayList();
         songs.addAll(model.getAllSongs());;
+        loadedPlaylist.setItems(songs);
         //songTimeCol.setCellValueFactory(new PropertyValueFactory("duration"));
 
         playlists = FXCollections.observableArrayList();
         playlists.addAll(model.getAllPlaylists());
         playlistTable.setItems(playlists);
+        
+        
         
         
 
@@ -144,16 +148,17 @@ public class MainViewController implements Initializable {
     }
 
 
+    @FXML
     private void addToPlaylist(ActionEvent event) {
-        /*Song s;
+        Song s;
         Playlist p;
-        if(playlistTable.getSelectionModel().getSelectedItem() != null && songsTable.getSelectionModel().getSelectedItem() != null)
+        if(playlistTable.getSelectionModel().getSelectedItem() != null && loadedPlaylist.getSelectionModel().getSelectedItem() != null)
         {
-            s = songsTable.getSelectionModel().getSelectedItem();
+            s = loadedPlaylist.getSelectionModel().getSelectedItem();
             p = playlistTable.getSelectionModel().getSelectedItem();
             model.addSongToPlaylist(p, s);
             selectPlaylist(null);
-        }*/
+        }
     }
 
     private void newSong(ActionEvent event) throws IOException {
@@ -210,13 +215,13 @@ public class MainViewController implements Initializable {
     @FXML
     private Song pressPlay(ActionEvent event) {
         Song s;
-        if ((s = loadedPlaylist.getSelectionModel().getSelectedItem()) != null && currentlyPlaying == false) {
+        if ((s = loadedPlaylist.getSelectionModel().getSelectedItem()) != null && isPlaying == false) {
             s = loadedPlaylist.getSelectionModel().getSelectedItem();
             pmodel.play(s);
-            currentlyPlaying = true;
-        } else if (currentlyPlaying == true) {
+            isPlaying = true;
+        } else if (isPlaying == true) {
             pmodel.pause();
-            currentlyPlaying = false;
+            isPlaying = false;
         } else {
             return null;
         }
@@ -228,6 +233,7 @@ public class MainViewController implements Initializable {
     private void pressNext(ActionEvent event) {
     }
 
+    @FXML
     private void selectPlaylist(MouseEvent event) {
         ObservableList<Song> songs = FXCollections.observableArrayList();
         Playlist p = playlistTable.getSelectionModel().getSelectedItem();
@@ -257,6 +263,11 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void pressRepeatCount(ActionEvent event) {
+    }
+
+    @FXML
+    private void viewAllSongs(ActionEvent event) {
+        initialize(null, null);
     }
 
 }
