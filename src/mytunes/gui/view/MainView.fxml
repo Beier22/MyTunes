@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.MainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mytunes.gui.controller.MainViewController">
    <children>
       <Separator layoutX="306.0" orientation="VERTICAL" prefHeight="680.0" prefWidth="0.0" AnchorPane.leftAnchor="306.0" AnchorPane.rightAnchor="248.0" />
       <Button id="buttonPrevious" fx:id="buttonPrevious" layoutX="78.0" layoutY="212.0" mnemonicParsing="false" onAction="#pressPrevious" prefHeight="48.0" prefWidth="48.0" styleClass="buttonPrevious" stylesheets="@../css/MainView.css" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="216.0" />
@@ -23,7 +23,7 @@
       <TextField fx:id="songPlayingField" editable="false" layoutX="20.0" layoutY="21.0" prefHeight="32.0" prefWidth="282.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="264.0" />
       <Slider fx:id="sliderChannels" layoutX="16.0" layoutY="176.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="264.0" AnchorPane.topAnchor="176.0" />
       <Slider fx:id="sliderVolume" layoutX="15.0" layoutY="149.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="265.0" />
-      <Slider fx:id="sliderSongtime" layoutX="15.0" layoutY="60.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="265.0" />
+      <Slider fx:id="sliderSongtime" layoutX="15.0" layoutY="60.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="265.0" AnchorPane.topAnchor="60.0" />
       <Button id="buttonStop" fx:id="buttonStop" layoutX="16.0" layoutY="221.0" maxHeight="149.0" maxWidth="50.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#pressStop" prefHeight="24.0" prefWidth="24.0" style="-fx-background-radius: 360;" styleClass="buttonStop" stylesheets="@../css/MainView.css" textAlignment="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="216.0">
          <font>
             <Font name="Courier New" size="40.0" />
@@ -48,11 +48,11 @@
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
       </Button>
-      <ListView fx:id="songsInPlaylistTable" layoutX="317.0" layoutY="391.0" onMouseReleased="#selectPlaylistSong" prefHeight="279.0" prefWidth="236.0" AnchorPane.leftAnchor="324.0" AnchorPane.rightAnchor="16.0" />
-      <ListView fx:id="loadedPlaylist" layoutX="20.0" layoutY="328.0" onMouseReleased="#selectPlaylistSong" prefHeight="313.0" prefWidth="280.0" />
-      <TextField layoutX="20.0" layoutY="284.0" prefHeight="32.0" prefWidth="280.0" />
-      <TextField layoutX="324.0" layoutY="350.0" AnchorPane.leftAnchor="324.0" AnchorPane.rightAnchor="16.0" />
-      <TextField layoutX="317.0" layoutY="6.0" AnchorPane.leftAnchor="324.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
+      <ListView fx:id="songsInPlaylistTable" layoutX="317.0" layoutY="391.0" onMouseReleased="#selectPlaylistSong" prefHeight="251.0" prefWidth="220.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="16.0" />
+      <ListView fx:id="loadedPlaylist" layoutX="20.0" layoutY="328.0" onMouseReleased="#selectPlaylistSong" prefHeight="313.0" prefWidth="280.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="264.0" />
+      <TextField layoutX="20.0" layoutY="284.0" prefHeight="32.0" prefWidth="280.0" AnchorPane.leftAnchor="16.0" />
+      <TextField layoutX="324.0" layoutY="350.0" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="16.0" />
+      <TextField layoutX="317.0" layoutY="6.0" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
       <Button id="buttonRepeat" fx:id="buttonRepeatCount" layoutX="222.0" layoutY="216.0" maxHeight="149.0" maxWidth="50.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#pressRepeatCount" prefHeight="24.0" prefWidth="24.0" style="-fx-background-radius: 360;" styleClass="buttonRepeat" stylesheets="@../css/MainView.css" textAlignment="CENTER" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="200.0">
          <font>
             <Font name="Courier New" size="40.0" />
@@ -61,10 +61,14 @@
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
       </Button>
-      <Label fx:id="currentlyPlaying" layoutX="15.0" layoutY="27.0" prefHeight="21.0" prefWidth="280.0" />
-      <ListView fx:id="playlistTable" layoutX="324.0" layoutY="73.0" onMouseReleased="#selectPlaylist" prefHeight="242.0" prefWidth="220.0" />
+      <Label fx:id="currentlyPlaying" layoutX="15.0" layoutY="27.0" prefHeight="21.0" prefWidth="280.0" AnchorPane.rightAnchor="264.0" AnchorPane.topAnchor="27.0" />
+      <ListView fx:id="playlistTable" layoutX="324.0" layoutY="73.0" onMouseReleased="#selectPlaylist" prefHeight="251.0" prefWidth="222.0" AnchorPane.bottomAnchor="369.0" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="60.0" />
       <AnchorPane layoutX="19.0" layoutY="89.0" prefHeight="56.0" prefWidth="271.0" styleClass="anchorPane2" stylesheets="@../css/MainView.css" />
-      <Button layoutX="23.0" layoutY="640.0" mnemonicParsing="false" onAction="#viewAllSongs" text="View All Songs" />
-      <Button layoutX="207.0" layoutY="640.0" mnemonicParsing="false" onAction="#addToPlaylist" text="Add To Playlist" />
+      <Button layoutX="20.0" layoutY="640.0" mnemonicParsing="false" onAction="#viewAllSongs" text="View All Songs" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="16.0" />
+      <Button layoutX="182.0" layoutY="640.0" mnemonicParsing="false" onAction="#addToPlaylist" text="Add To Playlist" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="264.0" />
+      <Button layoutX="324.0" layoutY="313.0" mnemonicParsing="false" text="New.." AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="322.0" />
+      <Button layoutX="479.0" layoutY="313.0" mnemonicParsing="false" text="Delete" AnchorPane.rightAnchor="16.0" />
+      <Button layoutX="320.0" layoutY="638.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="16.0" />
+      <Button layoutX="324.0" layoutY="638.0" mnemonicParsing="false" text="Add" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="322.0" />
    </children>
 </AnchorPane>
