@@ -113,14 +113,15 @@ public class MainViewController implements Initializable {
         playlistTable.setItems(playlists);
     }
 
-    /*public void updateSongTable() {
+    public void updateSongTable() {
 
-        songsTable.getItems().clear();
+        loadedPlaylist.getItems().clear();
         songs.removeAll();
         songs.addAll(model.getAllSongs());
-        songsTable.setItems(songs);
-    }*/
+        loadedPlaylist.setItems(songs);
+    }
 
+    @FXML
     private void newPlaylist(ActionEvent event) throws IOException {
 
         Stage s = new Stage();
@@ -161,15 +162,16 @@ public class MainViewController implements Initializable {
         }
     }
 
+    @FXML
     private void newSong(ActionEvent event) throws IOException {
-        /*Stage stage = new Stage();
+        Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mytunes/gui/view/EditView.fxml"));
         stage.setScene(new Scene(loader.load()));
         stage.setTitle("New Song");
         EditViewController songEdit = loader.<EditViewController>getController();
         stage.showAndWait();
 
-        updateSongTable();*/
+        updateSongTable();
     }
 
     private void editSong(ActionEvent event) throws IOException {
