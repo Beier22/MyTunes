@@ -50,9 +50,9 @@
       </Button>
       <ListView fx:id="songsInPlaylistTable" layoutX="317.0" layoutY="391.0" onMouseReleased="#selectPlaylistSong" prefHeight="251.0" prefWidth="220.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="16.0" />
       <ListView fx:id="loadedPlaylist" layoutX="14.0" layoutY="318.0" onMouseReleased="#selectPlaylistSong" prefHeight="313.0" prefWidth="280.0" AnchorPane.bottomAnchor="48.39999999999998" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="266.0" />
-      <TextField layoutX="20.0" layoutY="284.0" prefHeight="32.0" prefWidth="280.0" AnchorPane.leftAnchor="16.0" />
-      <TextField layoutX="324.0" layoutY="350.0" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="16.0" />
-      <TextField layoutX="317.0" layoutY="6.0" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
+      <TextField fx:id="searchSongsField" layoutX="20.0" layoutY="284.0" onKeyReleased="#searchSongs" prefHeight="32.0" prefWidth="280.0" AnchorPane.leftAnchor="16.0" />
+      <TextField fx:id="songsPlaylistSearchField" layoutX="324.0" layoutY="350.0" onKeyReleased="#songsPlaylistSearch" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="16.0" />
+      <TextField fx:id="playlistSearchField" layoutX="317.0" layoutY="6.0" onKeyReleased="#playlistSearch" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
       <Button id="buttonRepeat" fx:id="buttonRepeatCount" layoutX="222.0" layoutY="216.0" maxHeight="149.0" maxWidth="50.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#pressRepeatCount" prefHeight="24.0" prefWidth="24.0" style="-fx-background-radius: 360;" styleClass="buttonRepeat" stylesheets="@../css/MainView.css" textAlignment="CENTER" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="200.0">
          <font>
             <Font name="Courier New" size="40.0" />

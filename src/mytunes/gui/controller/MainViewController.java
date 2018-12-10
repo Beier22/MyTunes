@@ -87,6 +87,12 @@ public class MainViewController implements Initializable {
     private Button buttonRepeatCount;
     
     private boolean isPlaying = false;
+    @FXML
+    private TextField searchSongsField;
+    @FXML
+    private TextField songsPlaylistSearchField;
+    @FXML
+    private TextField playlistSearchField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -270,6 +276,48 @@ public class MainViewController implements Initializable {
     @FXML
     private void viewAllSongs(ActionEvent event) {
         initialize(null, null);
+    }
+
+    @FXML
+    private void searchSongs(KeyEvent event) {
+        ObservableList<Song> results = FXCollections.observableArrayList();
+        String input = searchSongsField.getText().toLowerCase();
+        
+        for (Song s : songs) {
+            if(s.getTitle().toLowerCase().contains(input))
+                results.add(s);
+        }
+        
+        loadedPlaylist.setItems(results);
+        
+    }
+
+    @FXML
+    private void songsPlaylistSearch(KeyEvent event) {
+        ObservableList<Song> results = FXCollections.observableArrayList();
+        String input = songsPlaylistSearchField.getText().toLowerCase();
+        
+        for (Song s : songs) {
+            if(s.getTitle().toLowerCase().contains(input))
+                results.add(s);
+        }
+        
+        songsInPlaylistTable.setItems(results);
+        
+    }
+
+    @FXML
+    private void playlistSearch(KeyEvent event) {
+        ObservableList<Playlist> results = FXCollections.observableArrayList();
+        String input = playlistSearchField.getText().toLowerCase();
+        
+        for (Playlist p : playlists) {
+            if(p.getName().toLowerCase().contains(input))
+                results.add(p);
+        }
+        
+        playlistTable.setItems(results);
+        
     }
 
 }
