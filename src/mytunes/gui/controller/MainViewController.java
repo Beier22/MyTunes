@@ -184,9 +184,9 @@ public class MainViewController implements Initializable {
     }
 
     private void deleteSong(ActionEvent event) {
-        /*Song s = songsTable.getSelectionModel().getSelectedItem();
+        Song s = loadedPlaylist.getSelectionModel().getSelectedItem();
         model.deleteSong(s);
-        updateSongTable();*/
+        updateSongTable();
     }
 
     private void search(KeyEvent event) {
