@@ -71,7 +71,7 @@ public class FileSearch {
 
                             String[] fileName = temp.getName().split("\\-");
                             if (fileName.length > 1) {
-                                s.setTitle(fileName[1].trim());
+                                s.setTitle(fileName[1].trim().replace(".mp3",""));
                                 s.setArtist(fileName[0].trim());
                             } else {
                                 s.setTitle(fileName[0].trim());
@@ -85,7 +85,13 @@ public class FileSearch {
                             i++;
                             Song s = new Song();
                             s.setID(i);
-                            s.setTitle(temp.getName());
+                            String[] fileName = temp.getName().split("\\-");
+                            if (fileName.length > 1) {
+                                s.setTitle(fileName[1].trim().replace(".wav",""));
+                                s.setArtist(fileName[0].trim());
+                            } else {
+                                s.setTitle(fileName[0].trim());
+                            }
                             s.setFilePath(temp.getAbsolutePath());
                             songs.add(s);
                         }
