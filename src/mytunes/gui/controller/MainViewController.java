@@ -43,7 +43,7 @@ public class MainViewController implements Initializable {
 
  
 
-    private IModel model = new Model();
+    
 
     private ObservableList<Song> songs;
     private ObservableList<Playlist> playlists;
@@ -51,7 +51,7 @@ public class MainViewController implements Initializable {
     private Playlist selectedPlaylist;
     private Song playingSong;
     private Song selectedSong;
-    private PlayerModel pmodel = new PlayerModel();
+    
     @FXML
     private ListView<Song> songsInPlaylistTable;
     
@@ -93,17 +93,20 @@ public class MainViewController implements Initializable {
     private TextField songsPlaylistSearchField;
     @FXML
     private TextField playlistSearchField;
-
+    private PlayerModel pmodel;
+    private IModel model; 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        model = new Model();
         songs = FXCollections.observableArrayList();
-        songs.addAll(model.getAllSongs());;
+        songs.addAll(model.loadAllSongs());
         loadedPlaylist.setItems(songs);
         //songTimeCol.setCellValueFactory(new PropertyValueFactory("duration"));
 
         playlists = FXCollections.observableArrayList();
         playlists.addAll(model.getAllPlaylists());
         playlistTable.setItems(playlists);
+        pmodel = new PlayerModel();
         
         
         
@@ -275,7 +278,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void viewAllSongs(ActionEvent event) {
-        initialize(null, null);
+        model.loadAllSongs();
     }
 
     @FXML

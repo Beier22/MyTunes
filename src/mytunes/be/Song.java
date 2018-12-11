@@ -16,15 +16,16 @@ import mytunes.dal.SongTAG;
 public class Song {
 
     private int ID;
-    private StringProperty title;
-    private StringProperty filePath;// = "\\music\\TEST.wav";
+    private String title;
+    private String filePath;
     private int duration;
-    private String stringDuration;
-    private StringProperty artist;
-    private StringProperty category;
-    private StringProperty durationString;
+    private String artist;
+    private String category;
+    
+    
+    
 
-    private StringProperty durationStringProperty()
+    /*private StringProperty durationStringProperty()
     {
        if (durationString == null) durationString = new SimpleStringProperty(this, "durationString");
             return durationString;  
@@ -52,15 +53,17 @@ public class Song {
     {
         if (category == null) category = new SimpleStringProperty(this, "category");
             return category; 
-    }
+    }*/
 
+    public Song(){
+    
+}
     public Song(String title, String artist, String filePath, String genre, int duration) {
-        categoryProperty().set(genre);
-        artistProperty().set(artist);
-        titleProperty().set(title);
-        filePathProperty().set(filePath);
-        stringDuration = (""+duration);
-        durationStringProperty().set(stringDuration);
+        this.category = genre;
+        this.artist = artist;
+        this.title = title;
+        this.filePath = filePath;
+        this.duration = duration;
         
        /* 
         try {
@@ -77,9 +80,6 @@ public class Song {
         System.out.println("Song succesfully created");*/
     }
 
-    public void play(int time) {
-
-    }
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -88,20 +88,19 @@ public class Song {
     }
 
     public String getTitle() {
-        return titleProperty().get();
+        return title;
     }
 
     public void setTitle(String title) {
-        titleProperty().set(title);
+        this.title = title;
     }
 
     public String getFilePath() {
-       
-        return filePathProperty().getValue();
+        return filePath;
     }
 
     public void setFilePath(String filePath) {
-        filePathProperty().setValue(filePath);
+        this.filePath = filePath;
     }
 
     public int getDuration() {
@@ -110,29 +109,29 @@ public class Song {
 
     public void setDuration(int duration) {
         this.duration = duration;
-        //durationStringProperty().set(value);
     }
 
     public String getArtist() {
-        return artistProperty().getValue();
+        return artist;
     }
 
     public void setArtist(String artist) {
-        artistProperty().setValue(artist);
+        this.artist = artist;
     }
 
     public String getCategory() {
-        return categoryProperty().getValue();
+        return category;
     }
 
     public void setCategory(String category) {
-        categoryProperty().setValue(category);
+        this.category = category;
     }
 
+    
     @Override
     public String toString()
     {
-        return "" + title.getValue() + ", " + artist.getValue();
+        return +ID+" " + title + ", " + artist;
     }
     
     

@@ -20,12 +20,15 @@ import javafx.stage.Window;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import mytunes.be.Song;
+
 
 public class FileSearch {
-
+  
+  private List<Song> songs;
   private String fileNameToSearch;
-  private List<String> result = new ArrayList<String>();
-	
+  
+  
   public String getFileNameToSearch() {
 	return fileNameToSearch;
   }
@@ -34,26 +37,12 @@ public class FileSearch {
 	this.fileNameToSearch = fileNameToSearch;
   }
 
-  public List<String> getResult() {
-	return result;
-  }
-
-  public static void main(String[] args) {
-
-	FileSearch fileSearch = new FileSearch();
   
-        //try different directory and filename :)
-	fileSearch.searchDirectory(new File("music"), ".mp3");
-
-	int count = fileSearch.getResult().size();
-	if(count ==0){
-	    System.out.println("\nNo result found!");
-	}else{
-	    System.out.println("\nFound " + count + " result!\n");
-	    for (String matched : fileSearch.getResult()){
-		System.out.println("Found : " + matched);
-	    }
-	}
+  public FileSearch(){
+      songs = new ArrayList();
+      searchDirectory(new File("music"), ".mp3");
+      //searchDirectory(new File("music"), ".wav");
+      
   }
 
   public void searchDirectory(File directory, String fileNameToSearch) {
@@ -62,36 +51,50 @@ public class FileSearch {
 
 	if (directory.isDirectory()) {
 	    search(directory);
-	} else {
-	    System.out.println(directory.getAbsoluteFile() + " is not a directory!");
 	}
-
   }
 
   private void search(File file) {
       
 	if (file.isDirectory()) {
-	  System.out.println("Searching directory ... " + file.getAbsoluteFile());
-		
-            //do you have permission to read this directory?	
 	    if (file.canRead()) {
+                
 		for (File temp : file.listFiles()) {
 		    if (temp.isDirectory()) {
 			search(temp);
 		    } else {
-			if (temp.getAbsolutePath().contains(".mp3")) {			
-			    result.add(temp.getAbsoluteFile().toString());
+			if (temp.getAbsolutePath().contains(".mp3")) {
+                            Song s = new Song();
+                            
+                            //SongTAG tag = new SongTAG(temp.getAbsolutePath());
+                            //tag.learnMetadata();
+                            for (int i = 0; i < file.length(); i++) {
+                              s.setID(i);  
+                            }
+                            
+                            s.setTitle(temp.getName());
+                            s.setFilePath(temp.getAbsolutePath());
+                            //s.setDuration(temp);
+                            //s.setCategory(tag.getCategory());
+                            System.out.println(s);
+			    songs.add(s);
 		    }
-                        else if(temp.getAbsolutePath().contains(".wav"))
-                            result.add(temp.getAbsoluteFile().toString());
+                        else if(temp.getAbsolutePath().contains(".wav")){
+                            Song s = new Song();
+                            s.setFilePath(temp.getAbsolutePath());
+			    songs.add(s);
+                        }
 		}
 	    }
-
-	 } else {
-		System.out.println(file.getAbsoluteFile() + "Permission Denied");
-	 }
+}
       }
 
+  }
+  
+  public List<Song> getSongs(){
+      
+      return songs;
+      
   }
 
 }

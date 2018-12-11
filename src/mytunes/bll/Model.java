@@ -9,6 +9,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import mytunes.be.Playlist;
 import mytunes.be.Song;
+import mytunes.dal.FileSearch;
 import mytunes.dal.PlaylistDAO;
 import mytunes.dal.SongDAO;
 
@@ -20,11 +21,13 @@ public class Model implements IModel
 {
     private SongDAO songDao;
     private PlaylistDAO playlistDao;
+    private FileSearch FS;
     
     public Model()
     {
         songDao = new SongDAO();
         playlistDao = new PlaylistDAO();
+        FS = new FileSearch();
     }
     
     @Override
@@ -71,6 +74,12 @@ public class Model implements IModel
     @Override
     public void addSongToPlaylist(Playlist p, Song s) {
         playlistDao.addSongToPlaylist(p, s);
+    }
+
+    @Override
+    public List<Song> loadAllSongs() {
+        
+        return /*null;*/FS.getSongs();
     }
     
 }
