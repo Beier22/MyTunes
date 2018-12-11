@@ -15,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import mytunes.be.Song;
+import mytunes.dal.FileSearch;
 
 /**
  *
@@ -24,6 +26,7 @@ import mytunes.be.Song;
 public class SongDAO
 {
     private IConnectionProvider conProvider;
+    private FileSearch searcher;
 
     public SongDAO()
     {
@@ -130,12 +133,14 @@ public class SongDAO
     }
     
     public int getMaxID(){
-        List<Song> songs = new ArrayList();
-        songs = getAllSongs();
-        int idCount = 0;
-        for (Song song : songs) {
-            idCount++;
-        }
-        return idCount;
+        searcher = new FileSearch();
+//        List<Song> songs = new ArrayList();
+//        searcher.getSongs();
+//        int idCount = 0;
+//        for (Song song : songs) {
+//            idCount++;
+//        }
+        
+        return searcher.getNumberOfSongs();
     }
 }

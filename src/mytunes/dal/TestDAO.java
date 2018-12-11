@@ -21,8 +21,9 @@ import mytunes.be.Song;
 public class TestDAO {
 
     public static void main(String[] kokot) throws FileNotFoundException, IOException, SQLException {
-        /*
+        
         SongDAO dao = new SongDAO();
+        /*
         List<Song> songs = dao.getAllSongs();
         for (Song song : songs)
         {
@@ -42,6 +43,8 @@ public class TestDAO {
             System.out.println(st);
         }*/
        //  LocalDbProvider.getLocalConnection("testdb.db").close();
+       int print = dao.getMaxID();
+        System.out.println(print);
         
     }
 

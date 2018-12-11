@@ -60,11 +60,13 @@ public class FileSearch {
 	    if (file.canRead()) {
                 
 		for (File temp : file.listFiles()) {
-                    i++;
+                    
 		    if (temp.isDirectory()) {
 			search(temp);
 		    } else {
+                        //i++;
 			if (temp.getAbsolutePath().contains(".mp3")) {
+                            i++;
                             Song s = new Song();
                             
                             //SongTAG tag = new SongTAG(temp.getAbsolutePath());
@@ -81,6 +83,7 @@ public class FileSearch {
 			    songs.add(s);
 		    }
                         else if(temp.getAbsolutePath().contains(".wav")){
+                            i++;
                             Song s = new Song();
                             s.setID(i); 
                             s.setTitle(temp.getName());
@@ -98,6 +101,10 @@ public class FileSearch {
       
       return songs;
       
+  }
+  
+  public int getNumberOfSongs(){
+      return i;
   }
 
 }
