@@ -25,4 +25,5 @@ public interface IModel
     ObservableList<Song> getPlaylistSongs(Playlist p);
     void addSongToPlaylist(Playlist p, Song s);
     List<Song> loadAllSongs();
+    int getMaxID();
 }

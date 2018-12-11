@@ -81,5 +81,10 @@ public class Model implements IModel
         
         return /*null;*/FS.getSongs();
     }
+
+    @Override
+    public int getMaxID() {
+        return songDao.getMaxID();
+    }
     
 }

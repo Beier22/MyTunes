@@ -128,4 +128,14 @@ public class SongDAO
         }
         return retval;
     }
+    
+    public int getMaxID(){
+        List<Song> songs = new ArrayList();
+        songs = getAllSongs();
+        int idCount = 0;
+        for (Song song : songs) {
+            idCount++;
+        }
+        return idCount;
+    }
 }
