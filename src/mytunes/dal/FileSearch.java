@@ -24,7 +24,7 @@ import mytunes.be.Song;
 
 
 public class FileSearch {
-  
+  private int i = 0;
   private List<Song> songs;
   private String fileNameToSearch;
   
@@ -60,6 +60,7 @@ public class FileSearch {
 	    if (file.canRead()) {
                 
 		for (File temp : file.listFiles()) {
+                    i++;
 		    if (temp.isDirectory()) {
 			search(temp);
 		    } else {
@@ -68,9 +69,9 @@ public class FileSearch {
                             
                             //SongTAG tag = new SongTAG(temp.getAbsolutePath());
                             //tag.learnMetadata();
-                            for (int i = 0; i < file.length(); i++) {
+                            
                               s.setID(i);  
-                            }
+                            
                             
                             s.setTitle(temp.getName());
                             s.setFilePath(temp.getAbsolutePath());
@@ -81,6 +82,8 @@ public class FileSearch {
 		    }
                         else if(temp.getAbsolutePath().contains(".wav")){
                             Song s = new Song();
+                            s.setID(i); 
+                            s.setTitle(temp.getName());
                             s.setFilePath(temp.getAbsolutePath());
 			    songs.add(s);
                         }
