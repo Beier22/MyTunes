@@ -32,8 +32,10 @@ public class SimpleAudioPlayer {
     }
    
     public void play(Song s){
+       
        hit = new Media(new File(s.getFilePath()).toURI().toString());
        mediaPlayer = new MediaPlayer(hit);
+       
        mediaPlayer.stop();
        mediaPlayer.play();
        

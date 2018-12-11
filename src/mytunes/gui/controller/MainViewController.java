@@ -246,6 +246,7 @@ public class MainViewController implements Initializable {
             playingSong = s;
             currentID = s.getID();
             isPlaying = true;
+            pmodel.play(s);
         } else if (isPlaying == true) {
             pmodel.pause();
             isPlaying = false;
