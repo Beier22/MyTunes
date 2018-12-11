@@ -31,10 +31,8 @@ public class SimpleAudioPlayer {
         MediaPlayer mediaPlayer = new MediaPlayer(hit);*/
     }
    
-    public void play(String path){
-        
-       System.out.println(path);
-       hit = new Media(new File(path).toURI().toString());
+    public void play(Song s){
+       hit = new Media(new File(s.getFilePath()).toURI().toString());
        mediaPlayer = new MediaPlayer(hit);
        mediaPlayer.stop();
        mediaPlayer.play();
@@ -48,14 +46,17 @@ public class SimpleAudioPlayer {
     public void stop(){
         mediaPlayer.stop();
     }
-    public void playNext(String next){
-        filePath = next;
+    public void playNext(Song s){
+        hit = new Media(new File(s.getFilePath()).toURI().toString());
+       mediaPlayer = new MediaPlayer(hit);
         mediaPlayer.pause();
         
     }
-    public void playPrevious(String previous){
-        filePath = previous;
-        mediaPlayer.pause();
+    public void playPrevious(Song s){
+        hit = new Media(new File(s.getFilePath()).toURI().toString());
+        mediaPlayer = new MediaPlayer(hit);
+        mediaPlayer.stop();
+        mediaPlayer.play();
         
     }
   

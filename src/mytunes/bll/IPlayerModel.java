@@ -12,8 +12,8 @@ import mytunes.be.Song;
  * @author Tothko
  */
 public interface IPlayerModel {
-    void play(Song s);
+    int play(Song s);
     void stop();
-    void playNext();
-    void playPrevious();
+    int playNext(Song s);
+    int playPrevious(Song s);
 }

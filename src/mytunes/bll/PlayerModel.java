@@ -27,8 +27,9 @@ public class PlayerModel implements IPlayerModel{
     }
     
     @Override
-    public void play(Song s){
-        SAP.play(s.getFilePath());
+    public int play(Song s){
+        SAP.play(s);
+        return s.getID();
     }
     @Override
     public void stop(){
@@ -36,12 +37,15 @@ public class PlayerModel implements IPlayerModel{
     }
             
     @Override
-    public void playNext(){
-        SAP.playNext(path);
+    public int playNext(Song s){
+        SAP.playNext(s);
+        return s.getID();
+        
     }
     @Override
-    public void playPrevious(){
-        SAP.playPrevious(path);
+    public int playPrevious(Song s){
+        SAP.playPrevious(s);
+        return s.getID();
     }
     
     public void pause(){

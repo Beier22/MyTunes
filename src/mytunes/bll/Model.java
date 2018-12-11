@@ -79,12 +79,15 @@ public class Model implements IModel
     @Override
     public List<Song> loadAllSongs() {
         
-        return /*null;*/FS.getSongs();
+        return FS.getSongs();
     }
 
     @Override
     public int getMaxID() {
         return songDao.getMaxID();
     }
+
     
 }
+    
+

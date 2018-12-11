@@ -45,9 +45,10 @@ public class MainViewController implements Initializable {
 
     
 
-    private ObservableList<Song> songs;
+    private ObservableList<Song> songsInPlaylist;
+    private ObservableList<Song> loadedSongs;
     private ObservableList<Playlist> playlists;
-
+    
     private Playlist selectedPlaylist;
     private Song playingSong;
     private Song selectedSong;
@@ -87,6 +88,10 @@ public class MainViewController implements Initializable {
     private Button buttonRepeatCount;
     
     private boolean isPlaying = false;
+    private boolean shuffleEnabled = false;
+    private boolean repeatEnabled = false;
+    private int repeatCount = 0;
+    private int currentID = 0;
     @FXML
     private TextField searchSongsField;
     @FXML
@@ -98,9 +103,9 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         model = new Model();
-        songs = FXCollections.observableArrayList();
-        songs.addAll(model.loadAllSongs());
-        loadedPlaylist.setItems(songs);
+        loadedSongs= FXCollections.observableArrayList();
+        loadedSongs.addAll(model.loadAllSongs());
+        loadedPlaylist.setItems(loadedSongs);
         //songTimeCol.setCellValueFactory(new PropertyValueFactory("duration"));
 
         playlists = FXCollections.observableArrayList();
@@ -113,6 +118,14 @@ public class MainViewController implements Initializable {
         
 
     }
+    public void updateSonginPlaylistTable(Playlist p) {
+
+        songsInPlaylistTable.getItems().clear();
+        songsInPlaylist.removeAll();
+        songsInPlaylist.addAll(model.getPlaylistSongs(p));
+        songsInPlaylistTable.setItems(songsInPlaylist);
+    }
+           
 
     public void updatePlaylistTable() {
 
@@ -125,9 +138,9 @@ public class MainViewController implements Initializable {
     public void updateSongTable() {
 
         loadedPlaylist.getItems().clear();
-        songs.removeAll();
-        songs.addAll(model.getAllSongs());
-        loadedPlaylist.setItems(songs);
+        loadedSongs.removeAll();
+        loadedSongs.addAll(model.getAllSongs());
+        loadedPlaylist.setItems(loadedSongs);
     }
 
     @FXML
@@ -221,6 +234,8 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void pressPrevious(ActionEvent event) {
+        pmodel.playPrevious(getNext(event));
+               
     }
 
     @FXML
@@ -228,7 +243,8 @@ public class MainViewController implements Initializable {
         Song s;
         if ((s = loadedPlaylist.getSelectionModel().getSelectedItem()) != null && isPlaying == false) {
             s = loadedPlaylist.getSelectionModel().getSelectedItem();
-            pmodel.play(s);
+            playingSong = s;
+            currentID = s.getID();
             isPlaying = true;
         } else if (isPlaying == true) {
             pmodel.pause();
@@ -242,6 +258,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void pressNext(ActionEvent event) {
+        pmodel.playNext(playingSong);
     }
 
     @FXML
@@ -258,18 +275,35 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void selectPlaylistSong(MouseEvent event) {
+        
     }
 
     @FXML
     private void pressStop(ActionEvent event) {
+        pmodel.stop();
+        
     }
 
     @FXML
     private void pressShuffle(ActionEvent event) {
+        
+        if(shuffleEnabled){
+            shuffleEnabled = false;
+            
+        }
+        else{
+            shuffleEnabled = true;
+            
+        }
     }
 
     @FXML
     private void pressRepeat(ActionEvent event) {
+        if(repeatEnabled){
+            repeatEnabled=false;
+        }
+        else
+            repeatEnabled = true;
     }
 
     @FXML
@@ -286,7 +320,7 @@ public class MainViewController implements Initializable {
         ObservableList<Song> results = FXCollections.observableArrayList();
         String input = searchSongsField.getText().toLowerCase();
         
-        for (Song s : songs) {
+        for (Song s : loadedSongs) {
             if(s.getTitle().toLowerCase().contains(input))
                 results.add(s);
         }
@@ -300,7 +334,7 @@ public class MainViewController implements Initializable {
         ObservableList<Song> results = FXCollections.observableArrayList();
         String input = songsPlaylistSearchField.getText().toLowerCase();
         
-        for (Song s : songs) {
+        for (Song s : songsInPlaylist) {
             if(s.getTitle().toLowerCase().contains(input))
                 results.add(s);
         }
@@ -321,6 +355,45 @@ public class MainViewController implements Initializable {
         
         playlistTable.setItems(results);
         
+    }
+    private Song getNext(ActionEvent event){
+        Song nextSong = null;
+        
+        if(repeatEnabled && (event == null)){
+            return playingSong;
+        }
+        else if(shuffleEnabled) {
+            for (Song song : loadedSongs) {
+           if(song.getID() == playingSong.getID()+(int)Math.random()*model.getMaxID()){
+           nextSong=song;
+           }
+            
+        }
+            return nextSong;
+        }
+        
+        else{
+            for (Song song : loadedSongs) {
+           if(song.getID() == playingSong.getID()+1){
+           nextSong=song;
+           }
+            
+        }
+       
+            
+            return nextSong;
+        }
+    }
+    private Song getPrevious(){
+        Song previousSong = null;
+        for (Song song : loadedSongs) {
+           if(song.getID() == playingSong.getID()-1){
+           previousSong=song;
+           return previousSong;
+           }
+            
+        }
+       return previousSong;
     }
 
 }
